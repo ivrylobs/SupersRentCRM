@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A60843A059BE9496DCEB018 /* Pods_SupersRentCRM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */; };
+		9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21A23C74485001170E0 /* AppDelegate.swift */; };
+		9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21C23C74485001170E0 /* SceneDelegate.swift */; };
+		9E0EF21F23C74485001170E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21E23C74485001170E0 /* ViewController.swift */; };
+		9E0EF22423C74487001170E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EF22323C74487001170E0 /* Assets.xcassets */; };
+		9E0EF23223C764B4001170E0 /* SideDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF23123C764B4001170E0 /* SideDrawerController.swift */; };
+		9EB0557123C79750000C9B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB0557023C79750000C9B68 /* Main.storyboard */; };
+		9EB0557323C7975F000C9B68 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB0557223C7975F000C9B68 /* Launch.storyboard */; };
+		9EB0557523C79924000C9B68 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557423C79924000C9B68 /* LoginController.swift */; };
+		9EB0557723C7A1FD000C9B68 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557623C7A1FD000C9B68 /* DashboardController.swift */; };
+		9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557823C7B3E7000C9B68 /* RentalController.swift */; };
+		9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRentCRM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.debug.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.debug.xcconfig"; sourceTree = "<group>"; };
+		9E0EF21723C74485001170E0 /* SupersRentCRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupersRentCRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0EF21A23C74485001170E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9E0EF21C23C74485001170E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9E0EF21E23C74485001170E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		9E0EF22323C74487001170E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E0EF22823C74487001170E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E0EF23123C764B4001170E0 /* SideDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDrawerController.swift; sourceTree = "<group>"; };
+		9EB0557023C79750000C9B68 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9EB0557223C7975F000C9B68 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		9EB0557423C79924000C9B68 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		9EB0557623C7A1FD000C9B68 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		9EB0557823C7B3E7000C9B68 /* RentalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalController.swift; sourceTree = "<group>"; };
+		9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSelectController.swift; sourceTree = "<group>"; };
+		DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.release.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E0EF21423C74485001170E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A60843A059BE9496DCEB018 /* Pods_SupersRentCRM.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E0EF20E23C74485001170E0 = {
+			isa = PBXGroup;
+			children = (
+				9E0EF21923C74485001170E0 /* SupersRentCRM */,
+				9E0EF21823C74485001170E0 /* Products */,
+				B77A663B4425F143AB740FCE /* Pods */,
+				F89EA4CF66A6A01DD61A0080 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9E0EF21823C74485001170E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E0EF21723C74485001170E0 /* SupersRentCRM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E0EF21923C74485001170E0 /* SupersRentCRM */ = {
+			isa = PBXGroup;
+			children = (
+				9E0EF23023C76475001170E0 /* Models */,
+				9E0EF22E23C76463001170E0 /* Controllers */,
+				9E0EF22F23C7646C001170E0 /* Views */,
+				9E0EF21A23C74485001170E0 /* AppDelegate.swift */,
+				9E0EF21C23C74485001170E0 /* SceneDelegate.swift */,
+				9E0EF22323C74487001170E0 /* Assets.xcassets */,
+				9E0EF22823C74487001170E0 /* Info.plist */,
+			);
+			path = SupersRentCRM;
+			sourceTree = "<group>";
+		};
+		9E0EF22E23C76463001170E0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9E0EF21E23C74485001170E0 /* ViewController.swift */,
+				9E0EF23123C764B4001170E0 /* SideDrawerController.swift */,
+				9EB0557423C79924000C9B68 /* LoginController.swift */,
+				9EB0557623C7A1FD000C9B68 /* DashboardController.swift */,
+				9EB0557823C7B3E7000C9B68 /* RentalController.swift */,
+				9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9E0EF22F23C7646C001170E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9EB0557023C79750000C9B68 /* Main.storyboard */,
+				9EB0557223C7975F000C9B68 /* Launch.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9E0EF23023C76475001170E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B77A663B4425F143AB740FCE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */,
+				DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F89EA4CF66A6A01DD61A0080 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9E0EF21623C74485001170E0 /* SupersRentCRM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E0EF22B23C74487001170E0 /* Build configuration list for PBXNativeTarget "SupersRentCRM" */;
+			buildPhases = (
+				87F711AC1740F455C784A5DB /* [CP] Check Pods Manifest.lock */,
+				9E0EF21323C74485001170E0 /* Sources */,
+				9E0EF21423C74485001170E0 /* Frameworks */,
+				9E0EF21523C74485001170E0 /* Resources */,
+				2BA5F7F1E2C4C2EED1A9CE56 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SupersRentCRM;
+			productName = SupersRentCRM;
+			productReference = 9E0EF21723C74485001170E0 /* SupersRentCRM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E0EF20F23C74485001170E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = banraomaibab;
+				TargetAttributes = {
+					9E0EF21623C74485001170E0 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 9E0EF21223C74485001170E0 /* Build configuration list for PBXProject "SupersRentCRM" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9E0EF20E23C74485001170E0;
+			productRefGroup = 9E0EF21823C74485001170E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E0EF21623C74485001170E0 /* SupersRentCRM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E0EF21523C74485001170E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0EF22423C74487001170E0 /* Assets.xcassets in Resources */,
+				9EB0557123C79750000C9B68 /* Main.storyboard in Resources */,
+				9EB0557323C7975F000C9B68 /* Launch.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BA5F7F1E2C4C2EED1A9CE56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87F711AC1740F455C784A5DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SupersRentCRM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E0EF21323C74485001170E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0EF21F23C74485001170E0 /* ViewController.swift in Sources */,
+				9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */,
+				9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */,
+				9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */,
+				9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */,
+				9E0EF23223C764B4001170E0 /* SideDrawerController.swift in Sources */,
+				9EB0557723C7A1FD000C9B68 /* DashboardController.swift in Sources */,
+				9EB0557523C79924000C9B68 /* LoginController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9E0EF22923C74487001170E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9E0EF22A23C74487001170E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9E0EF22C23C74487001170E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P82J993H56;
+				INFOPLIST_FILE = SupersRentCRM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRentCRM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9E0EF22D23C74487001170E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P82J993H56;
+				INFOPLIST_FILE = SupersRentCRM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRentCRM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E0EF21223C74485001170E0 /* Build configuration list for PBXProject "SupersRentCRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0EF22923C74487001170E0 /* Debug */,
+				9E0EF22A23C74487001170E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E0EF22B23C74487001170E0 /* Build configuration list for PBXNativeTarget "SupersRentCRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0EF22C23C74487001170E0 /* Debug */,
+				9E0EF22D23C74487001170E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E0EF20F23C74485001170E0 /* Project object */;
+}

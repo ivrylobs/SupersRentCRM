@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.9.1)
+  - KDCalendar (1.8.4):
+    - KDCalendar/EventManager (= 1.8.4)
+  - KDCalendar/EventManager (1.8.4)
+  - Locksmith (4.0.0)
+  - SideMenu (6.4.7)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - KDCalendar
+  - Locksmith
+  - SideMenu (~> 6.0)
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - KDCalendar
+    - Locksmith
+    - SideMenu
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  KDCalendar: 861d7fee0c7b919b68d2af61675a532165adcf26
+  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
+  SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 1d5ee05082c1df9e0fab10d7e684b9f3ce404bbc
+
+COCOAPODS: 1.8.4
