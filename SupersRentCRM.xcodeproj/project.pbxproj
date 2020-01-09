@@ -10,9 +10,7 @@
 		2A60843A059BE9496DCEB018 /* Pods_SupersRentCRM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */; };
 		9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21A23C74485001170E0 /* AppDelegate.swift */; };
 		9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21C23C74485001170E0 /* SceneDelegate.swift */; };
-		9E0EF21F23C74485001170E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21E23C74485001170E0 /* ViewController.swift */; };
 		9E0EF22423C74487001170E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EF22323C74487001170E0 /* Assets.xcassets */; };
-		9E0EF23223C764B4001170E0 /* SideDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF23123C764B4001170E0 /* SideDrawerController.swift */; };
 		9EB0557123C79750000C9B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB0557023C79750000C9B68 /* Main.storyboard */; };
 		9EB0557323C7975F000C9B68 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB0557223C7975F000C9B68 /* Launch.storyboard */; };
 		9EB0557523C79924000C9B68 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557423C79924000C9B68 /* LoginController.swift */; };
@@ -27,10 +25,8 @@
 		9E0EF21723C74485001170E0 /* SupersRentCRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupersRentCRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0EF21A23C74485001170E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E0EF21C23C74485001170E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9E0EF21E23C74485001170E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		9E0EF22323C74487001170E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E0EF22823C74487001170E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E0EF23123C764B4001170E0 /* SideDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDrawerController.swift; sourceTree = "<group>"; };
 		9EB0557023C79750000C9B68 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9EB0557223C7975F000C9B68 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		9EB0557423C79924000C9B68 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -73,11 +69,11 @@
 		9E0EF21923C74485001170E0 /* SupersRentCRM */ = {
 			isa = PBXGroup;
 			children = (
+				9E0EF21A23C74485001170E0 /* AppDelegate.swift */,
+				9E0EF21C23C74485001170E0 /* SceneDelegate.swift */,
 				9E0EF23023C76475001170E0 /* Models */,
 				9E0EF22E23C76463001170E0 /* Controllers */,
 				9E0EF22F23C7646C001170E0 /* Views */,
-				9E0EF21A23C74485001170E0 /* AppDelegate.swift */,
-				9E0EF21C23C74485001170E0 /* SceneDelegate.swift */,
 				9E0EF22323C74487001170E0 /* Assets.xcassets */,
 				9E0EF22823C74487001170E0 /* Info.plist */,
 			);
@@ -87,8 +83,6 @@
 		9E0EF22E23C76463001170E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9E0EF21E23C74485001170E0 /* ViewController.swift */,
-				9E0EF23123C764B4001170E0 /* SideDrawerController.swift */,
 				9EB0557423C79924000C9B68 /* LoginController.swift */,
 				9EB0557623C7A1FD000C9B68 /* DashboardController.swift */,
 				9EB0557823C7B3E7000C9B68 /* RentalController.swift */,
@@ -245,12 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E0EF21F23C74485001170E0 /* ViewController.swift in Sources */,
 				9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */,
 				9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */,
 				9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */,
 				9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */,
-				9E0EF23223C764B4001170E0 /* SideDrawerController.swift in Sources */,
 				9EB0557723C7A1FD000C9B68 /* DashboardController.swift in Sources */,
 				9EB0557523C79924000C9B68 /* LoginController.swift in Sources */,
 			);

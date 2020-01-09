@@ -40,18 +40,18 @@ class RentalController: UIViewController {
 		Alamofire.request(branchURL, method: .get, headers: header).responseJSON { response in
 			DispatchQueue.main.async {
 				switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						var storeList:[String] = []
-						//print(json)
-						for item in json.arrayValue {
-							storeList.append(item["branchName"].stringValue)
-						}
-						print(storeList)
-						self.branchList = storeList
-						self.performSegue(withIdentifier: "selectBranch", sender: self)
-					case .failure(let error):
-						print(error)
+				case .success(let data):
+					let json = JSON(data)
+					var storeList:[String] = []
+					//print(json)
+					for item in json.arrayValue {
+						storeList.append(item["branchName"].stringValue)
+					}
+					print(storeList)
+					self.branchList = storeList
+					self.performSegue(withIdentifier: "selectBranch", sender: self)
+				case .failure(let error):
+					print(error)
 				}
 			}
 		}
@@ -79,18 +79,16 @@ class RentalController: UIViewController {
 		}
 		
 		
-		
-		
 		let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 		
 		Alamofire.request(customerURL, method: .get, encoding: JSONEncoding.default, headers: header).responseJSON { response in
 			DispatchQueue.main.async {
 				switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						print(json)
-					case .failure(let error):
-						print(error)
+				case .success(let data):
+					let json = JSON(data)
+					print(json)
+				case .failure(let error):
+					print(error)
 				}
 			}
 		}

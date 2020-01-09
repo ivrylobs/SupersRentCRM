@@ -43,7 +43,7 @@ extension BranchSelectController: UITableViewDelegate {
 		let presenter = self.presentingViewController as? UINavigationController
 		let parentVC = presenter?.viewControllers.first as? UITabBarController
 		let childVC = parentVC?.viewControllers![0] as? RentalController
-
+		
 		childVC?.selectedBranch = self.branchList![indexPath.row]
 		
 		self.dismiss(animated: true, completion: nil)

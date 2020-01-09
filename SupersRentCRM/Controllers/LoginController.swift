@@ -41,28 +41,28 @@ class LoginController: UIViewController {
 			DispatchQueue.main.async {
 				switch response.result {
 					
-					case .success(let data):
-						
-						let json = JSON(data)
-						
-						if let tokenKey = json["accessToken"].string {
-							
-							print(tokenKey)
-							
-							let tokenAccess = "\(json["tokenType"].stringValue) \(tokenKey)"
-							
-							let userData = ["isLogin": true, "tokenAccess": tokenAccess, "username": json["username"].stringValue, "userData": json.arrayValue] as [String : Any]
-							self.updateUserData(userData: userData)
-							
-							print("saved Data")
-							self.loadUserData()
-							self.performSegue(withIdentifier: "loginToDashboard", sender: self)
-						} else {
-							print("Login Failed")
-						}
+				case .success(let data):
 					
-					case .failure(let error):
-						print(error)
+					let json = JSON(data)
+					
+					if let tokenKey = json["accessToken"].string {
+						
+						print(tokenKey)
+						
+						let tokenAccess = "\(json["tokenType"].stringValue) \(tokenKey)"
+						
+						let userData = ["isLogin": true, "tokenAccess": tokenAccess, "username": json["username"].stringValue, "userData": json.arrayValue] as [String : Any]
+						self.updateUserData(userData: userData)
+						
+						print("saved Data")
+						self.loadUserData()
+						self.performSegue(withIdentifier: "loginToDashboard", sender: self)
+					} else {
+						print("Login Failed")
+					}
+					
+				case .failure(let error):
+					print(error)
 				}
 			}
 		}
@@ -72,7 +72,7 @@ class LoginController: UIViewController {
 		let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
 		print(userData!)
 	}
-
+	
 	func updateUserData(userData: [String : Any] ) {
 		print("Do update data")
 		do {
