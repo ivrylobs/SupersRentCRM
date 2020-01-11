@@ -1,6 +1,9 @@
 ${PODS_ROOT}/Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework
 ${BUILT_PRODUCTS_DIR}/KDCalendar/KDCalendar.framework
 ${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework
+${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
+${BUILT_PRODUCTS_DIR}/StepView/StepView.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

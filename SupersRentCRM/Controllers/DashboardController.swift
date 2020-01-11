@@ -50,9 +50,10 @@ class DashboardController: UIViewController {
 							detailAmount += order["totalForItem"].doubleValue
 						}
 					}
-					print(detailAmount)
+					//print(detailAmount)
 					self.orderTotalDetail = detailAmount
-					self.detailTotal.text = "\(self.orderTotalDetail)"
+					self.detailTotal.text = String(format: "%.2f", self.orderTotalDetail)
+					
 					let urlOrderReturn = "https://api.supersrent.com/app-admin/api/orderDetailsReturn/\(userData["username"].stringValue)"
 					Alamofire.request(urlOrderReturn, method: .get, headers: header).responseJSON { response in
 						DispatchQueue.main.async {
@@ -65,7 +66,7 @@ class DashboardController: UIViewController {
 								for item in json.arrayValue {
 									returnAmount += item["orderAllTotal"].doubleValue
 								}
-								print(returnAmount)
+								//print(returnAmount)
 								self.orderTotalReturn = returnAmount
 								self.returnTotal.text = String(format: "%.2f", self.orderTotalReturn)
 							case .failure(let error):

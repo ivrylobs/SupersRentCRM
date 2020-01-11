@@ -15,6 +15,7 @@ import Locksmith
 class RentalController: UIViewController {
 	
 	var branchList: [String]?
+	var customerList: [JSON]?
 	var selectedBranch: String?
 	var customerSearch: String?
 	
@@ -47,7 +48,7 @@ class RentalController: UIViewController {
 					for item in json.arrayValue {
 						storeList.append(item["branchName"].stringValue)
 					}
-					print(storeList)
+					//print(storeList)
 					self.branchList = storeList
 					self.performSegue(withIdentifier: "selectBranch", sender: self)
 				case .failure(let error):
@@ -66,16 +67,12 @@ class RentalController: UIViewController {
 		
 		if self.identityNumber.text != "" && self.firstName.text == "" && self.phoneNumber.text == "" {
 			self.customerSearch = self.identityNumber.text
-			print("Identity")
 		} else if self.identityNumber.text == "" && self.firstName.text != "" && self.phoneNumber.text == "" {
 			self.customerSearch = self.firstName.text
 			customerURL = "https://api.supersrent.com/app-admin/api/customer/valueName/\(userData["username"].stringValue)/\(self.customerSearch!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
-			print("Name")
-			print(String(utf8String: self.customerSearch!.cString(using: .utf8)!)!)
 		} else if self.identityNumber.text == "" && self.firstName.text == "" && self.phoneNumber.text != ""{
 			self.customerSearch = self.phoneNumber.text
-			customerURL = "https://api.supersrent.com/app-admin/api/customer/valueName/\(userData["username"].stringValue)/\(self.customerSearch!)"
-			print("Phone")
+			customerURL = "https://api.supersrent.com/app-admin/api/customer/valuePhone/\(userData["username"].stringValue)/\(self.customerSearch!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
 		}
 		
 		
@@ -86,7 +83,9 @@ class RentalController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					print(json)
+					//print(json)
+					self.customerList = json.arrayValue
+					self.performSegue(withIdentifier: "rentToCustomer", sender: self)
 				case .failure(let error):
 					print(error)
 				}
@@ -98,6 +97,11 @@ class RentalController: UIViewController {
 		if segue.identifier == "selectBranch" {
 			let vc = segue.destination as? BranchSelectController
 			vc?.branchList = self.branchList
+		} else if segue.identifier == "rentToCustomer" {
+			let vc = segue.destination as? CustomerSelectController
+			print("Rental: \(self.selectedBranch!)")
+			vc?.customerData = self.customerList
+			vc?.selectedBranch = self.selectedBranch
 		}
 	}
 }

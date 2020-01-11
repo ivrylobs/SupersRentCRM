@@ -11,4 +11,6 @@ target 'SupersRentCRM' do
   pod 'SwiftyJSON'
   pod 'KDCalendar'
   pod 'Locksmith'
+  pod 'PopupDialog', '~> 1.1'
+  pod 'StepView'
 end

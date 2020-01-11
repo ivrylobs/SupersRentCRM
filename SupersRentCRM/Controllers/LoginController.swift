@@ -51,14 +51,14 @@ class LoginController: UIViewController {
 						
 						let tokenAccess = "\(json["tokenType"].stringValue) \(tokenKey)"
 						
-						let userData = ["isLogin": true, "tokenAccess": tokenAccess, "username": json["username"].stringValue, "userData": json.arrayValue] as [String : Any]
+						let userData: [String : Any] = ["isLogin": true, "tokenAccess": tokenAccess, "username": json["username"].stringValue, "userData": json.dictionaryObject!]
 						self.updateUserData(userData: userData)
 						
-						print("saved Data")
+						print("Login: saving Data")
 						self.loadUserData()
 						self.performSegue(withIdentifier: "loginToDashboard", sender: self)
 					} else {
-						print("Login Failed")
+						print("Login: Failed")
 					}
 					
 				case .failure(let error):
@@ -70,11 +70,11 @@ class LoginController: UIViewController {
 	
 	func loadUserData() {
 		let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
-		print(userData!)
+		print("Loaded Data: \(userData!)")
 	}
 	
 	func updateUserData(userData: [String : Any] ) {
-		print("Do update data")
+		print("Update: Updating data")
 		do {
 			try Locksmith.updateData(data: userData, forUserAccount: "admin")
 		} catch {
@@ -84,14 +84,14 @@ class LoginController: UIViewController {
 	
 	func appInitializer() {
 		if Locksmith.loadDataForUserAccount(userAccount: "admin") == nil {
-			print("nil ....")
+			print("App Initializer: nil ....!")
 			do {
 				try Locksmith.saveData(data: ["isLogin": false, "tokenAccess": "", "username": "", "userData": ""], forUserAccount: "admin")
 			} catch {
 				print(error)
 			}
 		} else {
-			print("have data")
+			print("App Initializer: Have data")
 			
 			self.loadUserData()
 		}
