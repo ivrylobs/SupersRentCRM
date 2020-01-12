@@ -19,9 +19,11 @@ class OrderDetailController: UIViewController {
 	var endTime: Date?
 	var startData: Date?
 	var endDate: Date?
-	
+	var orderID: String?
 	var senderID: String?
-	
+	var jsonBranch: JSON?
+	var projectType: String?
+	var orderCount: Int?
 	var productOrders: [JSON]?
 	var selectedBranch: String?
 	
@@ -45,7 +47,6 @@ class OrderDetailController: UIViewController {
 	
 
 	@IBAction func dateTimerPick(_ sender: UIButton) {
-		print(sender.restorationIdentifier!)
 		self.senderID = sender.restorationIdentifier
 		self.performSegue(withIdentifier: "orderToPicker", sender: self)
 	}
@@ -55,8 +56,8 @@ class OrderDetailController: UIViewController {
 		dropDown.anchorView = self.occupantDropDown
 		dropDown.dataSource = ["บ้านพักอาศัย 1 ชั้น0", "บ้านพักอาศัย 2 ชั้น", "อาคารพาณิช 1 ชั้น", "อาคารพาณิช 2 ชั้น", "อาคารพาณิช 3 ชั้น", "อาคารพาณิช 4 ชั้น", "อาคารสูง", "อื่นๆ"]
 		dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-			print("Selected item: \(item) at index: \(index)")
 			self.occupantDropDown.setTitle(item, for: .normal)
+			self.projectType = item
 		}
 		dropDown.show()
 	}
@@ -73,18 +74,55 @@ class OrderDetailController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					print(json.count)
 					let branch = Locksmith.loadDataForUserAccount(userAccount: "branch")
-					print(JSON(branch))
+					let branchList = JSON(branch!["branchList"]!)
+					let date = Date()
+					let calendar = Calendar(identifier: .buddhist)
+					let year = calendar.component(.year, from: date)
+					let month = calendar.component(.month, from: date)
+					self.orderCount = json.count + 1
+					for item in branchList.arrayValue {
+						if self.selectedBranch == item["branchName"].stringValue {
+							self.jsonBranch = item
+							if month < 10 {
+								self.orderID = "\(item["branchid"].stringValue)\(year)0\(month)/\(json.count + 1)"
+							} else {
+								self.orderID = "\(item["branchid"].stringValue)\(year)\(month)/\(json.count + 1)"
+							}
+							break
+						}
+					}
+					if self.orderID != nil {
+						print("Order Detail: \(self.orderID!)")
+						self.performSegue(withIdentifier: "orderToConfirm", sender: self)
+					} else {
+						print("Order: Fail to generate OrderID")
+					}
 				case .failure(let error):
-					print(error)
+					print("Order: ", error)
 				}
 			}
 		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let vc = segue.destination as! TimePickerController
-		vc.senderID = self.senderID
+		if segue.identifier == "orderToPicker" {
+			let vc = segue.destination as! TimePickerController
+			vc.senderID = self.senderID
+		} else if segue.identifier == "orderToConfirm" {
+			let vc = segue.destination as! ConfirmOrderController
+			vc.productOrders = self.productOrders
+			vc.orderID = self.orderID
+			vc.jsonBranch = self.jsonBranch
+			vc.startDate = self.startData
+			vc.endDate = self.endDate
+			vc.startTime = self.startTime
+			vc.endTime = self.endTime
+			vc.depositeAmount = Int(self.bearAmountText.text!)
+			vc.orderLocation = self.locationText.text!
+			vc.projectType = self.projectType
+			vc.orderCount = self.orderCount
+		}
+		
 	}
 }

@@ -81,8 +81,6 @@ class ProfileDetailController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier! == "profileToProduct" {
 			print("Profile: Passing Data to Product")
-			print(self.categoryData!)
-			print(self.productData!)
 			let vc = segue.destination as? ProductSelectController
 			vc?.productData = self.productData
 			vc?.productCategory = self.categoryData

@@ -48,7 +48,7 @@ class LoginController: UIViewController {
 					
 					if let tokenKey = json["accessToken"].string {
 						
-						print(tokenKey)
+			
 						
 						let tokenAccess = "\(json["tokenType"].stringValue) \(tokenKey)"
 						

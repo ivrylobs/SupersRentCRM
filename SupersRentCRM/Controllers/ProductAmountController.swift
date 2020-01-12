@@ -32,7 +32,6 @@ class ProductAmountController: UIViewController {
 	}
 	
 	@IBAction func gotoOrderDetail(_ sender: Any) {
-		print("Changing")
 		self.performSegue(withIdentifier: "gotoDetail", sender: self)
 	}
 	
@@ -80,8 +79,6 @@ extension ProductAmountController: UITableViewDelegate {
 
 extension ProductAmountController: ProductAmountCellDelegate {
 	func didChangeAmount(id: String, inputType: String, cell: ProductAmountCell) {
-		print(id, inputType)
-		
 		for i in 0..<self.productOrders!.count {
 			if id == self.productOrders![i]["productId"].stringValue {
 				if inputType == "increase" {

@@ -54,18 +54,17 @@ class RentalController: UIViewController {
 						do {
 							try Locksmith.updateData(data: ["branchList": json.arrayObject!], forUserAccount: "branch")
 							print("Locksmith: success")
-							print(Locksmith.loadDataForUserAccount(userAccount: "branch")!)
 						} catch {
 							print("Locksmith: ", error)
 						}
 					}
 					
 					var storeList:[String] = []
-					//print(json)
+
 					for item in json.arrayValue {
 						storeList.append(item["branchName"].stringValue)
 					}
-					//print(storeList)
+
 					self.branchList = storeList
 					self.performSegue(withIdentifier: "selectBranch", sender: self)
 				case .failure(let error):
@@ -100,7 +99,6 @@ class RentalController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					//print(json)
 					self.customerList = json.arrayValue
 					self.performSegue(withIdentifier: "rentToCustomer", sender: self)
 				case .failure(let error):

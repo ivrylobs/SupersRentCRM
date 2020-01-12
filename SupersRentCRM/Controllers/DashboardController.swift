@@ -41,16 +41,16 @@ class DashboardController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					//print(json)
+		
 					self.detailAmount.text = "\(json.count)"
 					var detailAmount: Double = 0.0
 					for item in json.arrayValue {
 						for order in item["orderItems"].arrayValue {
-							//print(order["totalForItem"].stringValue)
+			
 							detailAmount += order["totalForItem"].doubleValue
 						}
 					}
-					//print(detailAmount)
+	
 					self.orderTotalDetail = detailAmount
 					self.detailTotal.text = String(format: "%.2f", self.orderTotalDetail)
 					
@@ -60,13 +60,13 @@ class DashboardController: UIViewController {
 							switch response.result {
 							case .success(let data):
 								let json = JSON(data)
-								//print(json)
+						
 								self.returnAmount.text = "\(json.count)"
 								var returnAmount: Double = 0.0
 								for item in json.arrayValue {
 									returnAmount += item["orderAllTotal"].doubleValue
 								}
-								//print(returnAmount)
+						
 								self.orderTotalReturn = returnAmount
 								self.returnTotal.text = String(format: "%.2f", self.orderTotalReturn)
 							case .failure(let error):

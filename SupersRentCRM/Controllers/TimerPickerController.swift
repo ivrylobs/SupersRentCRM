@@ -20,27 +20,52 @@ class TimePickerController: UIViewController {
 		
 		if senderID! == "startDate" || senderID! == "endDate" {
 			self.timePicker.datePickerMode = .date
+			self.timePicker.locale = Locale(identifier: "th_TH")
+			self.timePicker.calendar = Calendar(identifier: .buddhist)
 		} else if senderID! == "startTime" || senderID! == "endTime" {
 			self.timePicker.datePickerMode = .time
+			self.timePicker.locale = Locale(identifier: "th_TH")
+			self.timePicker.calendar = Calendar(identifier: .buddhist)
 		}
 	}
 	
 	@IBAction func getTime(_ sender: Any) {
+		let calendar = Calendar(identifier: .buddhist)
 		
-		print(self.timePicker.date)
+		print("Date: ", self.timePicker.date)
 		let presenter = self.presentingViewController as! OrderDetailController
 		if senderID! == "startDate" {
 			presenter.startData = self.timePicker.date
-			presenter.startDateButton.setTitle(self.timePicker.date.description, for: .normal)
+			
+			let day = calendar.component(.day, from: self.timePicker.date)
+			let month = calendar.component(.month, from: self.timePicker.date)
+			let year = calendar.component(.year, from: self.timePicker.date)
+			
+			let formattedDate = "  \(day)-\(month)-\(year)"
+			presenter.startDateButton.setTitle(formattedDate, for: .normal)
 		} else if senderID! == "endDate" {
 			presenter.endDate = self.timePicker.date
-			presenter.endDateButton.setTitle(self.timePicker.date.description, for: .normal)
+			let day = calendar.component(.day, from: self.timePicker.date)
+			let month = calendar.component(.month, from: self.timePicker.date)
+			let year = calendar.component(.year, from: self.timePicker.date)
+			
+			let formattedDate = "  \(day)-\(month)-\(year)"
+			presenter.endDateButton.setTitle(formattedDate, for: .normal)
 		} else if senderID! == "startTime" {
 			presenter.startTime = self.timePicker.date
-			presenter.startTimeButton.setTitle(self.timePicker.date.description, for: .normal)
+			
+			let hour = calendar.component(.hour, from: self.timePicker.date)
+			let min = calendar.component(.minute, from: self.timePicker.date)
+			let sec = calendar.component(.second, from: self.timePicker.date)
+			let formattedTime = "  \(hour):\(min):\(sec)"
+			presenter.startTimeButton.setTitle(formattedTime, for: .normal)
 		} else if senderID! == "endTime" {
 			presenter.endTime = self.timePicker.date
-			presenter.endTimeButton.setTitle(self.timePicker.date.description, for: .normal)
+			let hour = calendar.component(.hour, from: self.timePicker.date)
+			let min = calendar.component(.minute, from: self.timePicker.date)
+			let sec = calendar.component(.second, from: self.timePicker.date)
+			let formattedTime = "  \(hour):\(min):\(sec)"
+			presenter.endTimeButton.setTitle(formattedTime, for: .normal)
 		}
 		
 		self.dismiss(animated: true, completion: nil)

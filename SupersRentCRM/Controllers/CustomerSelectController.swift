@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import PopupDialog
+import Locksmith
 
 class CustomerSelectController: UIViewController {
 	
@@ -35,6 +36,17 @@ class CustomerSelectController: UIViewController {
 			print("Customer: \(self.selectedBranch!)")
 			vc.profileData = self.profileData
 			vc.selectedBranch = self.selectedBranch
+			
+			do {
+				try Locksmith.saveData(data: ["customerInfo": self.profileData!.dictionaryObject!], forUserAccount: "customerInfo")
+			} catch {
+				print(error)
+				do {
+					try Locksmith.updateData(data: ["customerInfo": self.profileData!.dictionaryObject!], forUserAccount: "customerInfo")
+				} catch {
+					print(error)
+				}
+			}
 		}
 	}
 	
@@ -73,10 +85,11 @@ extension CustomerSelectController: UITableViewDelegate {
 		let popup = PopupDialog(title: title, message: message)
 		
 		let cancelButton = CancelButton(title: "Cancel") {
-			print("Cancel")
+			print("Login: Cancel")
 		}
 		let loginButton = DefaultButton(title: "Login", dismissOnTap: true) {
 			self.profileData = JSON(self.customerData![indexPath.row])
+			
 			self.performSegue(withIdentifier: "customerToProfile", sender: self)
 		}
 		

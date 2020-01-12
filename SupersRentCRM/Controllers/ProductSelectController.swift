@@ -52,32 +52,13 @@ class ProductSelectController: UIViewController {
 
 extension ProductSelectController: UITableViewDataSource {
 	
-//	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//		let header = UILabel()
-//		header.text = self.productCategory![section]["categoryName"].stringValue
-//		return header
-//	}
-//
-//	func numberOfSections(in tableView: UITableView) -> Int {
-//		return self.productCategory?.count ?? 1
-//	}
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//		var productCountInSection = 0
-//		for item in self.productData! {
-//			if self.productCategory![section]["categoryName"].stringValue == item["category"].stringValue {
-//				productCountInSection += 1
-//			}
-//		}
+
 		return self.productData!.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.productTable.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductCell
-//		print(indexPath.section, indexPath.row)
-//		for item in self.productData! {
-//			if self.productCategory![indexPath.section]
-//		}
 		
 		cell.categoryLabel.text = self.productData![indexPath.row]["category"].stringValue
 		cell.itemIDLabel.text = self.productData![indexPath.row]["productId"].stringValue
@@ -104,7 +85,6 @@ extension ProductSelectController: UITableViewDataSource {
 extension ProductSelectController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let cell = tableView.cellForRow(at: indexPath) as! ProductCell
-		print("Cell: ", cell.isCheck)
 		
 		if cell.isCheck {
 			cell.isCheck = false
@@ -130,7 +110,5 @@ extension ProductSelectController: UITableViewDelegate {
 				}
 			}
 		}
-		print("Cell: ", cell.isCheck)
-		print(self.selectedProduct.count)
 	}
 }
