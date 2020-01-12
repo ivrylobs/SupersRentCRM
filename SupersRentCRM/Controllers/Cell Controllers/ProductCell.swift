@@ -10,6 +10,8 @@ import UIKit
 
 class ProductCell: UITableViewCell {
 	
+	var isCheck: Bool = false
+	
 	
 	@IBOutlet weak var isSelect: UIImageView!
 	@IBOutlet weak var categoryLabel: UILabel!

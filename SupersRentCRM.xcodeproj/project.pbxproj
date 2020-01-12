@@ -14,6 +14,11 @@
 		9E2658FC23CA15410026F496 /* ProductSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2658FB23CA15410026F496 /* ProductSelectController.swift */; };
 		9E2658FF23CA25500026F496 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2658FD23CA25500026F496 /* ProductCell.swift */; };
 		9E26590023CA25500026F496 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E2658FE23CA25500026F496 /* ProductCell.xib */; };
+		9E36E68923CA469E0088C4C9 /* ProductAmountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36E68823CA469E0088C4C9 /* ProductAmountController.swift */; };
+		9E36E68C23CA47EB0088C4C9 /* ProductAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36E68A23CA47EB0088C4C9 /* ProductAmountCell.swift */; };
+		9E36E68D23CA47EB0088C4C9 /* ProductAmountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E36E68B23CA47EB0088C4C9 /* ProductAmountCell.xib */; };
+		9E3EBA5523CA62B40053F47A /* OrderDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EBA5423CA62B40053F47A /* OrderDetailController.swift */; };
+		9E3EBA5723CA694A0053F47A /* TimerPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EBA5623CA694A0053F47A /* TimerPickerController.swift */; };
 		9E86CB2A23C9003500A704B2 /* CustomerSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86CB2923C9003500A704B2 /* CustomerSelectController.swift */; };
 		9E86CB2E23C9013800A704B2 /* CustomerDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86CB2C23C9013800A704B2 /* CustomerDetailCell.swift */; };
 		9E86CB2F23C9013800A704B2 /* CustomerDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E86CB2D23C9013800A704B2 /* CustomerDetailCell.xib */; };
@@ -30,6 +35,7 @@
 		9EB0557723C7A1FD000C9B68 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557623C7A1FD000C9B68 /* DashboardController.swift */; };
 		9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557823C7B3E7000C9B68 /* RentalController.swift */; };
 		9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */; };
+		9EC97BBC23CB193900473C8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC97BBB23CB193900473C8A /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +49,11 @@
 		9E2658FB23CA15410026F496 /* ProductSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSelectController.swift; sourceTree = "<group>"; };
 		9E2658FD23CA25500026F496 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		9E2658FE23CA25500026F496 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		9E36E68823CA469E0088C4C9 /* ProductAmountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountController.swift; sourceTree = "<group>"; };
+		9E36E68A23CA47EB0088C4C9 /* ProductAmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountCell.swift; sourceTree = "<group>"; };
+		9E36E68B23CA47EB0088C4C9 /* ProductAmountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductAmountCell.xib; sourceTree = "<group>"; };
+		9E3EBA5423CA62B40053F47A /* OrderDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailController.swift; sourceTree = "<group>"; };
+		9E3EBA5623CA694A0053F47A /* TimerPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerController.swift; sourceTree = "<group>"; };
 		9E86CB2923C9003500A704B2 /* CustomerSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSelectController.swift; sourceTree = "<group>"; };
 		9E86CB2C23C9013800A704B2 /* CustomerDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailCell.swift; sourceTree = "<group>"; };
 		9E86CB2D23C9013800A704B2 /* CustomerDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerDetailCell.xib; sourceTree = "<group>"; };
@@ -59,6 +70,7 @@
 		9EB0557623C7A1FD000C9B68 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		9EB0557823C7B3E7000C9B68 /* RentalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalController.swift; sourceTree = "<group>"; };
 		9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSelectController.swift; sourceTree = "<group>"; };
+		9EC97BBB23CB193900473C8A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.release.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +128,9 @@
 				9E86CB2923C9003500A704B2 /* CustomerSelectController.swift */,
 				9E86CB3123C914F300A704B2 /* ProfileDetailController.swift */,
 				9E2658FB23CA15410026F496 /* ProductSelectController.swift */,
+				9E36E68823CA469E0088C4C9 /* ProductAmountController.swift */,
+				9E3EBA5423CA62B40053F47A /* OrderDetailController.swift */,
+				9E3EBA5623CA694A0053F47A /* TimerPickerController.swift */,
 				9E86CB3023C9013E00A704B2 /* Cell Controllers */,
 			);
 			path = Controllers;
@@ -134,6 +149,7 @@
 		9E0EF23023C76475001170E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9EC97BBB23CB193900473C8A /* Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +162,7 @@
 				9E86CB3823C918CC00A704B2 /* ProfileDetailCell.xib */,
 				9E86CB3C23C918F400A704B2 /* ProfileContactCell.xib */,
 				9E2658FE23CA25500026F496 /* ProductCell.xib */,
+				9E36E68B23CA47EB0088C4C9 /* ProductAmountCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -158,6 +175,7 @@
 				9E86CB3723C918CC00A704B2 /* ProfileDetailCell.swift */,
 				9E86CB3B23C918F400A704B2 /* ProfileContactCell.swift */,
 				9E2658FD23CA25500026F496 /* ProductCell.swift */,
+				9E36E68A23CA47EB0088C4C9 /* ProductAmountCell.swift */,
 			);
 			path = "Cell Controllers";
 			sourceTree = "<group>";
@@ -246,6 +264,7 @@
 				9EB0557123C79750000C9B68 /* Main.storyboard in Resources */,
 				9EB0557323C7975F000C9B68 /* Launch.storyboard in Resources */,
 				9E86CB3A23C918CC00A704B2 /* ProfileDetailCell.xib in Resources */,
+				9E36E68D23CA47EB0088C4C9 /* ProductAmountCell.xib in Resources */,
 				9E86CB3623C9188800A704B2 /* ProfileImageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,14 +319,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E86CB3D23C918F400A704B2 /* ProfileContactCell.swift in Sources */,
+				9E3EBA5723CA694A0053F47A /* TimerPickerController.swift in Sources */,
 				9E86CB2E23C9013800A704B2 /* CustomerDetailCell.swift in Sources */,
+				9E3EBA5523CA62B40053F47A /* OrderDetailController.swift in Sources */,
 				9E86CB3523C9188800A704B2 /* ProfileImageCell.swift in Sources */,
 				9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */,
 				9E86CB3923C918CC00A704B2 /* ProfileDetailCell.swift in Sources */,
 				9E2658FF23CA25500026F496 /* ProductCell.swift in Sources */,
 				9E86CB2A23C9003500A704B2 /* CustomerSelectController.swift in Sources */,
+				9E36E68C23CA47EB0088C4C9 /* ProductAmountCell.swift in Sources */,
 				9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */,
+				9E36E68923CA469E0088C4C9 /* ProductAmountController.swift in Sources */,
 				9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */,
+				9EC97BBC23CB193900473C8A /* Extension.swift in Sources */,
 				9E2658FC23CA15410026F496 /* ProductSelectController.swift in Sources */,
 				9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */,
 				9EB0557723C7A1FD000C9B68 /* DashboardController.swift in Sources */,

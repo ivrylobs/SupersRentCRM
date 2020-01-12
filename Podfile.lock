@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.9.1)
+  - DropDown (2.3.13)
   - DynamicBlurView (4.0.0)
   - KDCalendar (1.8.4):
     - KDCalendar/EventManager (= 1.8.4)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DropDown
   - KDCalendar
   - Locksmith
   - PopupDialog (~> 1.1)
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
     - DynamicBlurView
     - KDCalendar
     - Locksmith
@@ -33,6 +36,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   KDCalendar: 861d7fee0c7b919b68d2af61675a532165adcf26
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
@@ -41,6 +45,6 @@ SPEC CHECKSUMS:
   StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 17b93a8868901132d33e709c5aa9c9cb0d990b48
+PODFILE CHECKSUM: 90cebc3f7e7b12de7f39cc0aea99dbb731e1e92f
 
 COCOAPODS: 1.8.4

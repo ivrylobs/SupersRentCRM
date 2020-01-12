@@ -28,6 +28,8 @@ class RentalController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		hideKeyboardWhenTappedAround()
+		
 	}
 	
 	@IBAction func getBranch(_ sender: UIButton) {
@@ -43,6 +45,21 @@ class RentalController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
+					
+					do {
+						try Locksmith.saveData(data: ["branchList": json.arrayObject!], forUserAccount: "branch")
+						print(Locksmith.loadDataForUserAccount(userAccount: "branch")!)
+					} catch {
+						print("Locksmith: ", error)
+						do {
+							try Locksmith.updateData(data: ["branchList": json.arrayObject!], forUserAccount: "branch")
+							print("Locksmith: success")
+							print(Locksmith.loadDataForUserAccount(userAccount: "branch")!)
+						} catch {
+							print("Locksmith: ", error)
+						}
+					}
+					
 					var storeList:[String] = []
 					//print(json)
 					for item in json.arrayValue {

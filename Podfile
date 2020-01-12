@@ -13,4 +13,5 @@ target 'SupersRentCRM' do
   pod 'Locksmith'
   pod 'PopupDialog', '~> 1.1'
   pod 'StepView'
+  pod 'DropDown'
 end

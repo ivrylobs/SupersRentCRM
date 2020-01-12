@@ -22,6 +22,7 @@ class LoginController: UIViewController {
 		super.viewDidLoad()
 		
 		self.appInitializer()
+		hideKeyboardWhenTappedAround()
 		
 	}
 	

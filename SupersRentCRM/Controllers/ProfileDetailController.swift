@@ -36,6 +36,9 @@ class ProfileDetailController: UIViewController {
 		
 		self.profileTable.tableFooterView = UIView()
 	}
+	@IBAction func goBack(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
 	
 	
 	@IBAction func gotoProduct(_ sender: Any) {
@@ -77,6 +80,9 @@ class ProfileDetailController: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier! == "profileToProduct" {
+			print("Profile: Passing Data to Product")
+			print(self.categoryData!)
+			print(self.productData!)
 			let vc = segue.destination as? ProductSelectController
 			vc?.productData = self.productData
 			vc?.productCategory = self.categoryData

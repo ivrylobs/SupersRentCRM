@@ -38,6 +38,9 @@ class CustomerSelectController: UIViewController {
 		}
 	}
 	
+	@IBAction func goBack(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
 }
 
 extension CustomerSelectController: UITableViewDataSource {
