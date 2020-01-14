@@ -66,6 +66,29 @@
                                             <segue destination="6vE-dZ-1Ba" kind="presentation" modalPresentationStyle="fullScreen" id="Jrw-m3-Ran"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qWI-oh-9fj">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qWI-oh-9fj" id="Fz4-z7-bbB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Management" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17H-kY-kYE">
+                                                    <rect key="frame" x="137.33333333333334" y="11.666666666666664" width="100.33333333333334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="17H-kY-kYE" firstAttribute="centerY" secondItem="Fz4-z7-bbB" secondAttribute="centerY" id="2FS-OO-QTB"/>
+                                                <constraint firstItem="17H-kY-kYE" firstAttribute="centerX" secondItem="Fz4-z7-bbB" secondAttribute="centerX" id="x4C-jA-UGU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tqX-c2-3af" kind="presentation" modalPresentationStyle="fullScreen" id="8pl-vL-qVP"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -79,6 +102,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zkt-Xc-2W8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3911" y="2534"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iID-Sw-yE9">
+            <objects>
+                <navigationController id="tqX-c2-3af" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Os-Z8-LIn">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="J9x-sW-xCo" kind="relationship" relationship="rootViewController" id="zb2-tS-NGb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxB-1Q-JA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2348" y="3261"/>
+        </scene>
+        <!--History Report-->
+        <scene sceneID="OGR-uE-p25">
+            <objects>
+                <viewController id="1WV-oY-yqq" customClass="HistoryReportController" customModule="SupersRentCRM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bJd-xx-ccy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="thT-fa-KqR">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="thT-fa-KqR" firstAttribute="leading" secondItem="8W7-yL-kIy" secondAttribute="leading" id="W9d-QG-jel"/>
+                            <constraint firstItem="thT-fa-KqR" firstAttribute="top" secondItem="8W7-yL-kIy" secondAttribute="top" id="dZI-mu-T1h"/>
+                            <constraint firstItem="8W7-yL-kIy" firstAttribute="trailing" secondItem="thT-fa-KqR" secondAttribute="trailing" id="eEO-yT-0pI"/>
+                            <constraint firstItem="8W7-yL-kIy" firstAttribute="bottom" secondItem="thT-fa-KqR" secondAttribute="bottom" id="hb2-Pc-mxQ"/>
+                            <constraint firstItem="thT-fa-KqR" firstAttribute="centerY" secondItem="8W7-yL-kIy" secondAttribute="centerY" id="kL2-Pu-rnM"/>
+                            <constraint firstItem="thT-fa-KqR" firstAttribute="centerX" secondItem="8W7-yL-kIy" secondAttribute="centerX" id="zOb-KO-Dcu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8W7-yL-kIy"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="History Report" image="arrow.turn.down.right" id="iwP-uM-Mox"/>
+                    <connections>
+                        <outlet property="reportTable" destination="thT-fa-KqR" id="GJH-vy-fzD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ld-93-zFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18" y="3627"/>
+        </scene>
+        <!--Daily Report-->
+        <scene sceneID="3c3-eK-4Xf">
+            <objects>
+                <viewController id="qs9-5y-Qye" customClass="DailyReportController" customModule="SupersRentCRM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TxX-pr-n0r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-rD-r0Y">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BuW-rD-r0Y" firstAttribute="top" secondItem="XwG-Et-Kpt" secondAttribute="top" id="CA7-DW-RqU"/>
+                            <constraint firstItem="BuW-rD-r0Y" firstAttribute="centerY" secondItem="XwG-Et-Kpt" secondAttribute="centerY" id="Ezk-ko-psB"/>
+                            <constraint firstItem="XwG-Et-Kpt" firstAttribute="bottom" secondItem="BuW-rD-r0Y" secondAttribute="bottom" id="Gg0-Fe-aJM"/>
+                            <constraint firstItem="BuW-rD-r0Y" firstAttribute="leading" secondItem="XwG-Et-Kpt" secondAttribute="leading" id="R7v-CJ-byK"/>
+                            <constraint firstItem="XwG-Et-Kpt" firstAttribute="trailing" secondItem="BuW-rD-r0Y" secondAttribute="trailing" id="W0c-Yj-Iv3"/>
+                            <constraint firstItem="BuW-rD-r0Y" firstAttribute="centerX" secondItem="XwG-Et-Kpt" secondAttribute="centerX" id="yCm-fs-1VS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XwG-Et-Kpt"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Daily Report" image="list.bullet.below.rectangle" id="Kbd-aD-F6F"/>
+                    <connections>
+                        <outlet property="reportTable" destination="BuW-rD-r0Y" id="dzG-Ch-kqq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHn-Tv-Fys" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18" y="2975"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="zef-qG-ehN">
+            <objects>
+                <tabBarController id="J9x-sW-xCo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wag-ZQ-iKu">
+                        <barButtonItem key="leftBarButtonItem" image="list.bullet" largeContentSizeImage="list.bullet" width="50" id="4C4-Qa-ff5">
+                            <connections>
+                                <segue destination="o4i-LR-3Jw" kind="presentation" id="gcu-9s-5sQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zLG-mf-XxP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Absolute White"/>
+                        <color key="barTintColor" name="BlackGray"/>
+                        <color key="selectedImageTintColor" name="Absolute White"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qs9-5y-Qye" kind="relationship" relationship="viewControllers" id="WDt-bK-XYK"/>
+                        <segue destination="1WV-oY-yqq" kind="relationship" relationship="viewControllers" id="2B7-QZ-2Hl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ces-5w-PrP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1386" y="3261"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="5WZ-1Z-7AT">
@@ -2163,6 +2298,7 @@
     </scenes>
     <resources>
         <image name="arrow.right.arrow.left.square" width="21" height="22"/>
+        <image name="arrow.turn.down.right" width="22" height="16"/>
         <image name="calendar" width="23" height="22"/>
         <image name="chevron.left" width="12.666666984558105" height="17.666666030883789"/>
         <image name="clock" width="21.333333969116211" height="25.666666030883789"/>
@@ -2170,6 +2306,7 @@
         <image name="dollarsign.square" width="21" height="22"/>
         <image name="hammer.fill" width="26.333333969116211" height="33.333332061767578"/>
         <image name="list.bullet" width="22.333333969116211" height="15.333333015441895"/>
+        <image name="list.bullet.below.rectangle" width="21.333333969116211" height="23"/>
         <image name="return" width="23.333333969116211" height="20.666666030883789"/>
         <namedColor name="Absolute White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2189,8 +2326,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jOh-Ol-bEt"/>
-        <segue reference="3zr-5Z-6fX"/>
-        <segue reference="Ahf-VJ-xuM"/>
-        <segue reference="FUU-2g-hgT"/>
+        <segue reference="EeU-kB-nHa"/>
+        <segue reference="Vps-eJ-y1g"/>
+        <segue reference="gcu-9s-5sQ"/>
     </inferredMetricsTieBreakers>
 </document>

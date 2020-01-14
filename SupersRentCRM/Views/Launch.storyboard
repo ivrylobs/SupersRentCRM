@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tIK-Qp-7cx">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -16,19 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crmLogo" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-Y9-Yzg">
-                                <rect key="frame" x="10" y="298" width="394" height="300"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRr-rc-l8I">
+                                <rect key="frame" x="140.5" y="821" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crmLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bi5-PO-Cv5">
+                                <rect key="frame" x="20" y="323" width="374" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="quK-UT-KOf"/>
+                                    <constraint firstAttribute="height" constant="250" id="8NA-tU-uzj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GQx-Y9-Yzg" firstAttribute="centerY" secondItem="rb8-Rt-FoO" secondAttribute="centerY" id="3eJ-IL-NOb"/>
-                            <constraint firstItem="GQx-Y9-Yzg" firstAttribute="leading" secondItem="Xax-rY-2kX" secondAttribute="leading" constant="10" id="9GV-cO-8rT"/>
-                            <constraint firstItem="Xax-rY-2kX" firstAttribute="trailing" secondItem="GQx-Y9-Yzg" secondAttribute="trailing" constant="10" id="Ghg-uY-WTy"/>
-                            <constraint firstItem="GQx-Y9-Yzg" firstAttribute="centerX" secondItem="rb8-Rt-FoO" secondAttribute="centerX" id="Wd8-jy-rBM"/>
+                            <constraint firstItem="bi5-PO-Cv5" firstAttribute="leading" secondItem="Xax-rY-2kX" secondAttribute="leading" constant="20" id="1gZ-Ob-Z0w"/>
+                            <constraint firstItem="Xax-rY-2kX" firstAttribute="trailing" secondItem="bi5-PO-Cv5" secondAttribute="trailing" constant="20" id="EBf-mk-m6t"/>
+                            <constraint firstItem="bi5-PO-Cv5" firstAttribute="centerX" secondItem="rb8-Rt-FoO" secondAttribute="centerX" id="IX3-HJ-B8n"/>
+                            <constraint firstItem="bi5-PO-Cv5" firstAttribute="centerY" secondItem="rb8-Rt-FoO" secondAttribute="centerY" id="dGj-jD-ngH"/>
+                            <constraint firstItem="VRr-rc-l8I" firstAttribute="centerX" secondItem="rb8-Rt-FoO" secondAttribute="centerX" id="hr9-jh-gXU"/>
+                            <constraint firstItem="Xax-rY-2kX" firstAttribute="bottom" secondItem="VRr-rc-l8I" secondAttribute="bottom" constant="20" id="y5I-56-oQp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xax-rY-2kX"/>
                     </view>
@@ -39,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="crmLogo" width="60" height="60"/>
+        <image name="crmLogo" width="572" height="572"/>
     </resources>
 </document>

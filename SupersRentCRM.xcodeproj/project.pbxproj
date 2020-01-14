@@ -63,6 +63,10 @@
 		9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557823C7B3E7000C9B68 /* RentalController.swift */; };
 		9EB0557B23C7B92A000C9B68 /* BranchSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */; };
 		9EC97BBC23CB193900473C8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC97BBB23CB193900473C8A /* Extension.swift */; };
+		9EF9FA3123CE5A8E0049BB20 /* DailyReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9FA3023CE5A8E0049BB20 /* DailyReportController.swift */; };
+		9EF9FA3323CE5AE20049BB20 /* HistoryReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9FA3223CE5AE20049BB20 /* HistoryReportController.swift */; };
+		9EF9FA3723CE5D200049BB20 /* DailyReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9FA3523CE5D200049BB20 /* DailyReportCell.swift */; };
+		9EF9FA3823CE5D200049BB20 /* DailyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF9FA3623CE5D200049BB20 /* DailyReportCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +129,10 @@
 		9EB0557823C7B3E7000C9B68 /* RentalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalController.swift; sourceTree = "<group>"; };
 		9EB0557A23C7B92A000C9B68 /* BranchSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchSelectController.swift; sourceTree = "<group>"; };
 		9EC97BBB23CB193900473C8A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9EF9FA3023CE5A8E0049BB20 /* DailyReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReportController.swift; sourceTree = "<group>"; };
+		9EF9FA3223CE5AE20049BB20 /* HistoryReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReportController.swift; sourceTree = "<group>"; };
+		9EF9FA3523CE5D200049BB20 /* DailyReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReportCell.swift; sourceTree = "<group>"; };
+		9EF9FA3623CE5D200049BB20 /* DailyReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyReportCell.xib; sourceTree = "<group>"; };
 		DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.release.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +188,7 @@
 				9E4F72FA23CCAEC40067A82A /* Reuseable */,
 				9E4F72F623CC7D580067A82A /* Rental */,
 				9E4F72F723CC7D730067A82A /* Return */,
+				9EF9FA2F23CE5A6D0049BB20 /* Report */,
 				9E86CB3023C9013E00A704B2 /* Cell Controllers */,
 			);
 			path = Controllers;
@@ -277,6 +286,7 @@
 		9E86CB2B23C9011600A704B2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9EF9FA3423CE5D050049BB20 /* ReportDetailCell */,
 				9E6000BF23CCC14200F6C8D6 /* ReturnDetailCell */,
 				9E89EA9123CB8078007FB5E9 /* ConfirmCell */,
 				9E86CB2D23C9013800A704B2 /* CustomerDetailCell.xib */,
@@ -315,6 +325,24 @@
 				9E89EA8E23CB8067007FB5E9 /* ConfirmProductCell.xib */,
 			);
 			path = ConfirmCell;
+			sourceTree = "<group>";
+		};
+		9EF9FA2F23CE5A6D0049BB20 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				9EF9FA3023CE5A8E0049BB20 /* DailyReportController.swift */,
+				9EF9FA3223CE5AE20049BB20 /* HistoryReportController.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		9EF9FA3423CE5D050049BB20 /* ReportDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				9EF9FA3523CE5D200049BB20 /* DailyReportCell.swift */,
+				9EF9FA3623CE5D200049BB20 /* DailyReportCell.xib */,
+			);
+			path = ReportDetailCell;
 			sourceTree = "<group>";
 		};
 		B77A663B4425F143AB740FCE /* Pods */ = {
@@ -413,6 +441,7 @@
 				9E8A1B1423CD2B980021F3D3 /* TransportCell.xib in Resources */,
 				9E86CB3623C9188800A704B2 /* ProfileImageCell.xib in Resources */,
 				9E6000BE23CCBAEF00F6C8D6 /* ProductReturnCell.xib in Resources */,
+				9EF9FA3823CE5D200049BB20 /* DailyReportCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +502,7 @@
 				9E86CB2E23C9013800A704B2 /* CustomerDetailCell.swift in Sources */,
 				9E3EBA5523CA62B40053F47A /* OrderDetailController.swift in Sources */,
 				9E89EA8323CB7FF6007FB5E9 /* ConfirmCustomerCell.swift in Sources */,
+				9EF9FA3323CE5AE20049BB20 /* HistoryReportController.swift in Sources */,
 				9E86CB3523C9188800A704B2 /* ProfileImageCell.swift in Sources */,
 				9E6000C223CCC16400F6C8D6 /* OrderInformationCell.swift in Sources */,
 				9E6000BD23CCBAEF00F6C8D6 /* ProductReturnCell.swift in Sources */,
@@ -485,9 +515,11 @@
 				9E36E68C23CA47EB0088C4C9 /* ProductAmountCell.swift in Sources */,
 				9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */,
 				9E36E68923CA469E0088C4C9 /* ProductAmountController.swift in Sources */,
+				9EF9FA3123CE5A8E0049BB20 /* DailyReportController.swift in Sources */,
 				9E4F72FC23CCAEF30067A82A /* ProductReturnSelectController.swift in Sources */,
 				9E5D8F1C23CCD811000BEE83 /* ReturnDetailController.swift in Sources */,
 				9E8A1B1A23CD315F0021F3D3 /* ProductReturnSummaryController.swift in Sources */,
+				9EF9FA3723CE5D200049BB20 /* DailyReportCell.swift in Sources */,
 				9EB0557923C7B3E7000C9B68 /* RentalController.swift in Sources */,
 				9EC97BBC23CB193900473C8A /* Extension.swift in Sources */,
 				9E4F72F923CC7DA70067A82A /* ReturnItemController.swift in Sources */,
