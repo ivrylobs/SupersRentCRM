@@ -11,6 +11,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Locksmith
+import PopupDialog
 
 class ProductSelectController: UIViewController {
 	
@@ -29,7 +30,6 @@ class ProductSelectController: UIViewController {
 		
 		let cellNib = UINib(nibName: "ProductCell", bundle: nil)
 		self.productTable.register(cellNib, forCellReuseIdentifier: "productCell")
-		
 	}
 	@IBAction func goBack(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
@@ -37,13 +37,21 @@ class ProductSelectController: UIViewController {
 	
 	
 	@IBAction func gotoProductAmount(_ sender: Any) {
+		if self.selectedProduct.count > 0 {
+			self.performSegue(withIdentifier: "productToAmount", sender: self)
+		} else {
+			let alert = PopupDialog(title: "ผิดพลาด", message: "กรุณาเลือกสินค้าอย่างน้อย 1 ชิ้น")
+			let okButton = DefaultButton(title: "OK", height: 40, dismissOnTap: true, action: nil)
+			alert.addButton(okButton)
+			self.present(alert, animated: true, completion: nil)
+		}
 		
-		self.performSegue(withIdentifier: "productToAmount", sender: self)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier! == "productToAmount" {
 			let vc = segue.destination as! ProductAmountController
+			print(self.selectedProduct)
 			vc.productOrders = self.selectedProduct
 			vc.selectedBranch = self.selectedBranch
 		}
@@ -53,7 +61,6 @@ class ProductSelectController: UIViewController {
 extension ProductSelectController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
 		return self.productData!.count
 	}
 	

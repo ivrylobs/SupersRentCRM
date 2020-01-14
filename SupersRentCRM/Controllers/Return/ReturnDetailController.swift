@@ -21,7 +21,6 @@ class ReturnDetailController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		//print(self.returnProduct!)
 		
 		self.productReturnDetailTable.dataSource = self
 		self.productReturnDetailTable.delegate = self
@@ -42,7 +41,7 @@ class ReturnDetailController: UIViewController {
 	
 	
 	@IBAction func checkReturnDamagedLost(_ sender: UIButton) {
-		print("Press Check")
+		
 		var checkCorrection = true
 		
 		var copyReturnProduct = self.returnProduct
@@ -60,7 +59,6 @@ class ReturnDetailController: UIViewController {
 				checkCorrection = false
 				
 			} else {
-				print("pass")
 				let totalForItem = Double(totalBalance) * self.returnProduct!["orderItems"][i]["productRentPrice"].doubleValue
 				let inStock = self.returnProduct!["orderItems"][i]["productInStock"].intValue + totalBalance
 				let itemBalance = self.returnProduct!["orderItems"][i]["productBalance"].intValue - totalBalance
@@ -77,8 +75,7 @@ class ReturnDetailController: UIViewController {
 				copyReturnProduct!["orderItems"][i]["productDefaultReturn"].stringValue = "0"
 				copyReturnProduct!["orderItems"][i]["productDefaultDamaged"].stringValue = "0"
 				copyReturnProduct!["orderItems"][i]["productDefaultLost"].stringValue = "0"
-				
-				//print(copyReturnProduct!["orderItems"].arrayValue[i])
+
 			}
 		}
 		
@@ -115,15 +112,13 @@ extension ReturnDetailController: UITableViewDataSource {
 			header.text = "Order Information"
 		} else if section == 1 {
 			header.text = "Product Information"
-		} else if section == 2 {
-			header.text = "Order Confirm"
 		}
 		
 		return header
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 3
+		return 2
 	}
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		var numberOfRow: Int?
@@ -132,8 +127,6 @@ extension ReturnDetailController: UITableViewDataSource {
 			numberOfRow = 1
 		} else if section == 1 {
 			numberOfRow = self.returnProduct!["orderItems"].count
-		} else if section == 2 {
-			numberOfRow = 1
 		}
 		
 		return numberOfRow!
@@ -167,26 +160,20 @@ extension ReturnDetailController: UITableViewDataSource {
 					productCell?.returnAmount.text = item["productDefaultReturn"].stringValue
 					productCell?.damagedAmount.text = item["productDefaultDamaged"].stringValue
 					productCell?.lostAmount.text = item["productDefaultLost"].stringValue
-					//print("found")
 					break
 				} else {
 					productCell?.returnAmount.text = ""
 					productCell?.damagedAmount.text = ""
 					productCell?.lostAmount.text = ""
-					//print("not found")
 				}
 			}
 			
 			cell = productCell
 	
-		} else if indexPath.section == 2 {
-			//let orderConfirmCell = self.productReturnDetailTable.dequeueReusableCell(withIdentifier: "orderConfirmCell", for: indexPath)
-			cell = UITableViewCell()
-	
 		}
+		
 		return cell!
 	}
-	
 	
 }
 
@@ -201,8 +188,6 @@ extension ReturnDetailController: ProductInformationCellDelegate {
 			}
 		}
 	}
-
-	
 	
 }
 

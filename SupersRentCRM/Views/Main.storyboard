@@ -97,7 +97,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="KJe-rY-bWv">
                                 <rect key="frame" x="20" y="341" width="335" height="130"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vQP-EQ-44T">
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="username" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vQP-EQ-44T">
                                         <rect key="frame" x="16" y="0.0" width="303" height="50"/>
                                         <color key="backgroundColor" name="White"/>
                                         <constraints>
@@ -105,8 +105,13 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-IS-vJw">
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-IS-vJw">
                                         <rect key="frame" x="16" y="80" width="303" height="50"/>
                                         <color key="backgroundColor" name="White"/>
                                         <constraints>
@@ -114,6 +119,11 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -195,11 +205,11 @@
             <objects>
                 <viewController restorationIdentifier="ReturnItem" id="dUq-iP-03V" customClass="ReturnItemController" customModule="SupersRentCRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Etw-tE-Wzx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="acM-rA-3df">
-                                <rect key="frame" x="10" y="166" width="355" height="441"/>
+                                <rect key="frame" x="10" y="100" width="355" height="441"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ns6-AQ-IzI">
                                         <rect key="frame" x="10" y="0.0" width="335" height="100"/>
@@ -240,7 +250,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="เลขประจำตัวประชาชน" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-mk-wp9">
-                                                <rect key="frame" x="20" y="30.333333333333314" width="295" height="50"/>
+                                                <rect key="frame" x="20" y="30.333333333333343" width="295" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ucK-ZF-cl6"/>
                                                 </constraints>
@@ -343,11 +353,11 @@
             <objects>
                 <viewController restorationIdentifier="RentalItem" id="RyJ-ty-kZN" customClass="RentalController" customModule="SupersRentCRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jVQ-wS-qi8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bPr-sf-f6y">
-                                <rect key="frame" x="10" y="166" width="355" height="441"/>
+                                <rect key="frame" x="10" y="100" width="355" height="441"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8PJ-da-3V9">
                                         <rect key="frame" x="10" y="0.0" width="335" height="100"/>
@@ -387,8 +397,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="เลขประจำตัวประชาชน" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="u61-V0-Inm">
-                                                <rect key="frame" x="20" y="30.333333333333314" width="295" height="50"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="identity" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="เลขประจำตัวประชาชน" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="u61-V0-Inm">
+                                                <rect key="frame" x="20" y="30.333333333333343" width="295" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ibM-0B-ijx"/>
                                                 </constraints>
@@ -401,7 +411,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ชื่อจริง" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-7N-s9P">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="firstname" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ชื่อจริง" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-7N-s9P">
                                                 <rect key="frame" x="20" y="120.66666666666669" width="295" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="8fB-jp-LDl"/>
@@ -415,7 +425,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="เบอร์โทรศัพท์" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X3B-hW-fU2">
+                                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="phonenumber" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="เบอร์โทรศัพท์" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X3B-hW-fU2">
                                                 <rect key="frame" x="20" y="211" width="295" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Cs9-oq-iLA"/>
@@ -2156,7 +2166,7 @@
         <image name="calendar" width="23" height="22"/>
         <image name="chevron.left" width="12.666666984558105" height="17.666666030883789"/>
         <image name="clock" width="21.333333969116211" height="25.666666030883789"/>
-        <image name="crmLogo" width="60" height="60"/>
+        <image name="crmLogo" width="572.33331298828125" height="572.33331298828125"/>
         <image name="dollarsign.square" width="21" height="22"/>
         <image name="hammer.fill" width="26.333333969116211" height="33.333332061767578"/>
         <image name="list.bullet" width="22.333333969116211" height="15.333333015441895"/>
@@ -2178,9 +2188,9 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O1a-CQ-1mM"/>
-        <segue reference="EeU-kB-nHa"/>
-        <segue reference="Vps-eJ-y1g"/>
-        <segue reference="Pyg-ha-FW4"/>
+        <segue reference="jOh-Ol-bEt"/>
+        <segue reference="3zr-5Z-6fX"/>
+        <segue reference="Ahf-VJ-xuM"/>
+        <segue reference="FUU-2g-hgT"/>
     </inferredMetricsTieBreakers>
 </document>

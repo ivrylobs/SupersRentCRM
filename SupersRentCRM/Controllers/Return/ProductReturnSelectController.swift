@@ -11,6 +11,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Locksmith
+import PopupDialog
 
 class ProductReturnSelectController: UIViewController {
 	
@@ -31,8 +32,17 @@ class ProductReturnSelectController: UIViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let vc = segue.destination as? ReturnDetailController
-		vc?.returnProduct = self.productReturnDataSource![selectedRowData!]
+		
+		if selectedRowData != nil {
+			let vc = segue.destination as? ReturnDetailController
+			vc?.returnProduct = self.productReturnDataSource![selectedRowData!]
+		} else {
+			let alert = PopupDialog(title: "ผิดพลาด", message: "กรุณาเลือกสินค้าอย่างน้อย 1 ชิ้น")
+			let okButton = DefaultButton(title: "OK", height: 40, dismissOnTap: true, action: nil)
+			alert.addButton(okButton)
+			self.present(alert, animated: true, completion: nil)
+		}
+		
 	}
 	
 	@IBAction func gotoReturnDetail(_ sender: UIButton) {

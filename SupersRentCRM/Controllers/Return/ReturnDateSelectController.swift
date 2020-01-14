@@ -34,6 +34,7 @@ class ReturnDateSelectController: UIViewController {
 	@IBAction func returnToView(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
+	
 	@IBAction func getNewDate(_ sender: UIButton) {
 		self.whoPresentButton = sender.restorationIdentifier
 		self.performSegue(withIdentifier: "goGetEndDate", sender: self)
@@ -53,6 +54,7 @@ class ReturnDateSelectController: UIViewController {
 			vc?.branchJSON = branch["branchList"]
 		}
 	}
+	
 	@IBAction func goConfirmReturn(_ sender: UIButton) {
 		
 		let formatter = DateFormatter()
@@ -67,11 +69,11 @@ class ReturnDateSelectController: UIViewController {
 		var newJson = self.productReturn
 		
 		var countTotal = 0.0
-		var allItem = 0
+		
 		for item in self.productReturn!["orderItems"].arrayValue {
 			countTotal += item["totalForItem"].doubleValue
-			allItem += item["productReturn"].intValue + item["productDamaged"].intValue + item["productLost"].intValue
 		}
+		
 		formatter.dateFormat =  "yyyy-MM-dd'T'"
 		let day = formatter.string(from: self.endDate!)
 		formatter.dateFormat =  "HH:mm:ss.SSSXXX"
@@ -79,8 +81,6 @@ class ReturnDateSelectController: UIViewController {
 		
 		newJson!["orderContractEnd"].stringValue = "\(day)\(time)"
 		newJson!["orderAllDay"].stringValue = "\(differnce.day!)"
-		newJson!["orderAllItem"].stringValue = "\(allItem)"
-		newJson!["orderAllItemBalance"].intValue = self.productReturn!["orderAllItemBalance"].intValue - newJson!["orderAllItem"].intValue
 		newJson!["orderAllTotalPerDay"].stringValue = "\(String(format: "%.2f", countTotal))"
 		newJson!["orderAllTotal"].stringValue = "\(String(format: "%.2f", countTotal * Double(differnce.day!)))"
 		

@@ -58,13 +58,13 @@ class ProductReturnSummaryController: UIViewController {
 		
 		let pushOrderReturnURL = "https://api.supersrent.com/app-admin/api/orderDetailsReturn/orderDetailReturn"
 		let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
-//		print(self.productReturnJSON!)
-		var countAllItem = 0
+		
 		var countAllitemReturn = 0
+		
 		for item in self.productReturnJSON!["orderItems"].arrayValue {
-			countAllItem += item["productRent"].intValue
 			countAllitemReturn += (item["productReturn"].intValue + item["productDamaged"].intValue + item["productLost"].intValue)
 		}
+		
 		let body: [String: Any] = [
 			"orderID": self.productReturnJSON!["orderID"].stringValue,
 			"orderRentID": self.productReturnJSON!["id"].stringValue,
@@ -83,8 +83,8 @@ class ProductReturnSummaryController: UIViewController {
 			"orderContractDateStart": self.productReturnJSON!["orderContractDateStart"].stringValue,
 			"orderContractDateEnd": self.productReturnJSON!["orderContractDateEnd"].stringValue,
 			"orderAllTotal": self.productReturnJSON!["orderAllTotal"].stringValue,
-			"orderAllTotalPro": "\(self.productReturnJSON!["orderAllTotal"].doubleValue + (JSON(self.transportAmount![1]).doubleValue * JSON(self.transportAmount![1]).doubleValue) - JSON(self.transportAmount![2]).doubleValue)",
-			"orderAllItem": "\(countAllItem)",
+			"orderAllTotalPro": "\(self.productReturnJSON!["orderAllTotal"].doubleValue + (JSON(self.transportAmount![0]).doubleValue * JSON(self.transportAmount![1]).doubleValue) - JSON(self.transportAmount![2]).doubleValue)",
+			"orderAllItem": self.productReturnJSON!["orderAllItem"].stringValue,
 			"orderAllItemReturn": countAllitemReturn,
 			"orderAllDay": self.productReturnJSON!["orderAllDay"].stringValue,
 			"orderAllTotalPerDay": self.productReturnJSON!["orderAllTotalPerDay"].stringValue,
@@ -94,19 +94,60 @@ class ProductReturnSummaryController: UIViewController {
 			"orderLogisticAmount": JSON(self.transportAmount![1]).intValue,
 			"orderLogisticTotal": JSON(self.transportAmount![1]).intValue * JSON(self.transportAmount![1]).intValue,
 			"orderPromotion": JSON(self.transportAmount![2]).intValue,
-			"orderAllItemBalance": self.productReturnJSON!["orderAllItemBalance"].intValue,
+			"orderAllItemBalance": self.productReturnJSON!["orderAllItemBalance"].intValue - countAllitemReturn,
 			"admin": self.productReturnJSON!["admin"].stringValue,
-			"orderProject": self.productReturnJSON!["orderProject"].stringValue
+			"orderProject": self.productReturnJSON!["orderProject"].stringValue,
+			"orderItemReturn": self.productReturnJSON!["orderItems"].arrayObject!
 		]
 		
-		print(body)
-		let popup = PopupDialog(title: "ยืนยันการทำรายการ", message: "กรุณายืนยันการแก้ไข")
+		print(JSON(body))
 		
+		let popup = PopupDialog(title: "ยืนยันการทำรายการ", message: "กรุณายืนยันการแก้ไข")
 		let cancelButton = CancelButton(title: "ยกเลิก", dismissOnTap: true, action: nil)
+		
 		let continueButton = DefaultButton(title: "ตกลง", dismissOnTap: true) {
 			self.pullAPI(url: pushOrderReturnURL, method: .post, parameters: body, header: header) { recievedJSON in
 				if recievedJSON["message"].stringValue != "" {
+					
 					print("Push ReturnItem: Success")
+					
+					var updateCount = 0
+					
+					for item in self.productReturnJSON!["orderItems"].arrayValue {
+						let returnOrderUpdateStock = "https://api.supersrent.com/app-admin/api/orderDetailsReturn/orderDetailReturn/update/\(userData["username"].stringValue)/\(item["id"].stringValue)"
+						let returnStockBody:[String: Any] = ["productDefaultReturn": item["productReturn"].stringValue, "productDefaultDamaged": item["productDamaged"].stringValue, "productDefaultLost": item["productLost"].stringValue]
+						self.pullAPI(url: returnOrderUpdateStock, method: .put, parameters: returnStockBody, header: header) { stockReturnJSON in
+							print(stockReturnJSON)
+							updateCount += 1
+							
+							if updateCount == self.productReturnJSON!["orderItems"].count {
+								print("Initialize: Update Stock Return Quantity.")
+								let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
+								
+								if self.productReturnJSON!["orderAllItem"].intValue == countAllitemReturn {
+									
+									let updateTrueOrderReturnURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail/updateOrder/\(userData["username"])/\(self.productReturnJSON!["id"].stringValue)"
+									let updateBody: [String: Any] = ["orderItems": self.productReturnJSON!["orderItems"].arrayObject!, "update": true]
+									
+									self.pullAPI(url: updateTrueOrderReturnURL, method: .put, parameters: updateBody, header: header) { json in
+										print(json)
+									}
+								} else {
+									
+									let updateFalseOrderReturnURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail/updateOrders/\(userData["username"])/\(self.productReturnJSON!["id"].stringValue)"
+									let updateFalseBody: [String: Any] = ["orderItems": self.productReturnJSON!["orderItems"].arrayObject!, "orderAllItem": JSON(body)["orderAllItemBalance"].stringValue]
+									
+									self.pullAPI(url: updateFalseOrderReturnURL, method: .put, parameters: updateFalseBody, header: header) { json in
+										print(json)
+									}
+								}
+							} else {
+								print("In process to update stock quantity.")
+							}
+						}
+					}
+					
+					
 				} else {
 					print("Push ReturnItem: Failed")
 				}
@@ -114,6 +155,7 @@ class ProductReturnSummaryController: UIViewController {
 				presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
 			}
 		}
+		
 		popup.addButtons([cancelButton, continueButton])
 		popup.buttonAlignment = .horizontal
 		self.present(popup, animated: true, completion: nil)

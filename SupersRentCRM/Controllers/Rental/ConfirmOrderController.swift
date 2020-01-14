@@ -64,13 +64,18 @@ class ConfirmOrderController: UIViewController {
 	}
 	
 	@IBAction func addOrderDetail(_ sender: UIButton) {
+		
 		self.getUserName()
+		
 		let popup = PopupDialog(title: "ยืนยันการเช่า", message: "ยืนยันที่จะเช่าสินค้าหรือไม่?")
+		
 		popup.buttonAlignment = .horizontal
+		
 		let confirmButton = DefaultButton(title: "ยืนยัน", dismissOnTap: true) {
 			let formatter = DateFormatter()
 			formatter.calendar = Calendar(identifier: .iso8601)
 			formatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+			
 			let finalOrder: [String: Any] = [
 				"orderID": self.orderID!,
 				"orderBranch": self.jsonBranch!["branchName"].stringValue,
@@ -100,25 +105,49 @@ class ConfirmOrderController: UIViewController {
 			
 			let data = Locksmith.loadDataForUserAccount(userAccount: "admin")!
 			let userData = JSON(data)
-			let getUserURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail"
+			let pushRentOrderURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail"
+			
 			let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 			self.backDoorUsername = userData["username"].stringValue
-			print(finalOrder)
-			Alamofire.request(getUserURL, method: .post, parameters: finalOrder, encoding: JSONEncoding.default, headers: header).responseJSON { response in
-				DispatchQueue.main.async {
-					switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						print("Add Order Detail: \(json["message"].stringValue)")
-						if json["message"].stringValue == "Order Detail Add successfully!" {
-							let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
-							presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
+			//print(JSON(finalOrder))
+			
+
+			
+			self.pullAPI(url: pushRentOrderURL, method: .post, parameters: finalOrder, header: header) { json in
+				print("Add Order Detail: \(json["message"].stringValue)")
+				if json["message"].stringValue == "Order Detail Add successfully!" {
+					
+					
+					var countUpdate = 0
+					
+					for item in self.orderItems {
+						let updateStockURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail/update/\(userData["username"].stringValue)/\(JSON(item)["id"].stringValue)"
+						let updateStockBody:[String: Any] = ["productQuantity": JSON(item)["productRent"].stringValue]
+						
+						self.pullAPI(url: updateStockURL, method: .put, parameters: updateStockBody, header: header) { stockJSON in
+							print(stockJSON)
+							countUpdate += 1
+							
+							if countUpdate == self.orderItems.count {
+								let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
+								presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
+							}
 						}
-					case .failure(let error):
-						print(error)
 					}
+					
+					
+					
+				} else {
+					let alertPopUp = PopupDialog(title: "ผิดพลาด", message: "เพิ่มคำสั่งเช่า ไม่สำเร็จกรุณาลองใหม่อีกครั้ง")
+					let okAlertButton = DefaultButton(title: "OK", height: 40, dismissOnTap: true) {
+						let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
+						presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
+					}
+					alertPopUp.addButton(okAlertButton)
+					self.present(alertPopUp, animated: true, completion: nil)
 				}
 			}
+			
 		}
 		
 		let cancelButton = CancelButton(title: "ยกเลิก", dismissOnTap: true) {
@@ -135,19 +164,53 @@ class ConfirmOrderController: UIViewController {
 		let getUserURL = "https://api.supersrent.com/app-admin/api/user-setting/getuser/\(userData["username"].stringValue)"
 		let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 		self.backDoorUsername = userData["username"].stringValue
-		Alamofire.request(getUserURL, method: .get, headers: header).responseJSON { response in
-			DispatchQueue.main.async {
-				switch response.result {
-				case .success(let data):
-					let json = JSON(data)
-					self.orderEmployee = "\(json["name"].stringValue) \(json["lastname"].stringValue)"
-				case .failure(let error):
-					print(error)
+		self.pullAPI(url: getUserURL, method: .get, header: header) { json in
+			self.orderEmployee = "\(json["name"].stringValue) \(json["lastname"].stringValue)"
+		}
+	}
+	
+	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
+		if parameters != nil && header == nil {
+			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
+				}
+			}
+		} else if header != nil && parameters == nil {
+			Alamofire.request(url, method: method, headers: header).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
+				}
+			}
+		} else if header != nil && parameters != nil {
+			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
 				}
 			}
 		}
 	}
-	
 	
 }
 
@@ -225,7 +288,7 @@ extension ConfirmOrderController: UITableViewDataSource {
 				countAll += item["productQuantity"].intValue
 				
 				let finalItem: [String: Any] = [
-					"_id": item["id"].stringValue,
+					"id": item["id"].stringValue,
 					"category": item["category"].stringValue,
 					"productId": item["productId"].stringValue,
 					"productSize": item["productSize"].stringValue,

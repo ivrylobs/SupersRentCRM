@@ -38,6 +38,7 @@ class ProductAmountController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier! == "gotoDetail" {
 			let vc = segue.destination as! OrderDetailController
+			//print(self.productOrders!)
 			vc.productOrders = self.productOrders
 			vc.selectedBranch = self.selectedBranch
 		}
