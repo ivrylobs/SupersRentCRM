@@ -14,11 +14,16 @@ import Locksmith
 
 class ProfileDetailController: UIViewController {
 	
-	var profileData: JSON?
-	var selectedBranch: String?
+	//Initial data to passing to segue destination.
 	var productData: [JSON]?
 	var categoryData: [JSON]?
+	var productReturnData: [JSON]?
 	
+	//Given data from view heirichy.
+	var profileData: JSON?
+	var selectedBranch: String?
+	var selectedBranchJSON: JSON?
+	var whoPresentMe: String?
 	
 	@IBOutlet weak var profileTable: UITableView!
 	
@@ -43,37 +48,29 @@ class ProfileDetailController: UIViewController {
 	
 	@IBAction func gotoProduct(_ sender: Any) {
 		
-		print("Profile: Pull product data")
+		print("Profile: Pulling product data")
 		let data = Locksmith.loadDataForUserAccount(userAccount: "admin")!
 		let userData = JSON(data)
 		
 		let productURL = "https://api.supersrent.com/app-admin/api/product/product-list/branch/\(userData["username"].stringValue)/\(self.selectedBranch!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
+		let productReturnURL = "https://api.supersrent.com/app-admin/api/orderDetails//orderDetail/getOrderDetail/return/\(userData["username"].stringValue)/\(self.profileData!["idcardnumber"].stringValue)"
+		let productCategoryURL = "https://api.supersrent.com/app-admin/api/product/category-list/\(userData["username"].stringValue)/\(self.selectedBranch!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
 		let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 		
-		Alamofire.request(productURL, method: .get, headers: header).responseJSON { response in
-			DispatchQueue.main.async {
-				switch response.result {
-				case .success(let data):
-					let productJSON = JSON(data)
-					self.productData = productJSON.arrayValue
-					let productURL = "https://api.supersrent.com/app-admin/api/product/category-list/\(userData["username"].stringValue)/\(self.selectedBranch!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
-					
-					Alamofire.request(productURL, method: .get, headers: header).responseJSON { response in
-						DispatchQueue.main.async {
-							switch response.result {
-							case .success(let data):
-								let categoryJSON = JSON(data)
-								self.categoryData = categoryJSON.arrayValue
-								print("Profile: Pulled data complete")
-								self.performSegue(withIdentifier: "profileToProduct", sender: self)
-							case .failure(let error):
-								print(error)
-							}
-						}
-					}
-				case .failure(let error):
-					print(error)
+		if self.whoPresentMe == "RentalItem" {
+			self.pullAPI(url: productURL, method: .get, header: header) { recievedJSON in
+				self.productData = recievedJSON.arrayValue
+				self.pullAPI(url: productCategoryURL, method: .get, header: header) { categoryJSON in
+					self.categoryData = categoryJSON.arrayValue
+					print("Profile: Pulled data complete")
+					self.performSegue(withIdentifier: "profileToProduct", sender: self)
 				}
+			}
+		} else if self.whoPresentMe == "ReturnItem" {
+			self.pullAPI(url: productReturnURL, method: .get, header: header) { recievedJSON in
+				self.productReturnData = recievedJSON.arrayValue
+				print("Profile: Pulled Return data complete")
+				self.performSegue(withIdentifier: "profileToReturnProduct", sender: self)
 			}
 		}
 	}
@@ -85,6 +82,53 @@ class ProfileDetailController: UIViewController {
 			vc?.productData = self.productData
 			vc?.productCategory = self.categoryData
 			vc?.selectedBranch = self.selectedBranch
+		} else if segue.identifier == "profileToReturnProduct" {
+			let vc = segue.destination as? ProductReturnSelectController
+			vc?.productReturnDataSource = self.productReturnData
+			
+		}
+	}
+	
+	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
+		if parameters != nil && header == nil {
+			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
+				}
+			}
+		} else if header != nil && parameters == nil {
+			Alamofire.request(url, method: method, headers: header).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
+				}
+			}
+		} else if header != nil && parameters != nil {
+			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+				DispatchQueue.main.async {
+					switch response.result {
+					case .success(let data):
+						let json = JSON(data)
+						handler(json)
+					case .failure(let error):
+						print("API: Pulling failed with error!")
+						print("API Error: \(error)")
+					}
+				}
+			}
 		}
 	}
 }

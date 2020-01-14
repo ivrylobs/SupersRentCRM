@@ -33,7 +33,10 @@ class ConfirmOrderController: UIViewController {
 	var rentDay: Int?
 	var orderCount: Int?
 	var backDoorUsername: String?
+	var formattedStartTime: String?
+	var formattedEndTime: String?
 	var orderItems:[Any] = []
+	var orderEmployee: String?
 	
 	@IBOutlet weak var confirmTable: UITableView!
 	
@@ -61,30 +64,30 @@ class ConfirmOrderController: UIViewController {
 	}
 	
 	@IBAction func addOrderDetail(_ sender: UIButton) {
-		
+		self.getUserName()
 		let popup = PopupDialog(title: "ยืนยันการเช่า", message: "ยืนยันที่จะเช่าสินค้าหรือไม่?")
 		popup.buttonAlignment = .horizontal
 		let confirmButton = DefaultButton(title: "ยืนยัน", dismissOnTap: true) {
 			let formatter = DateFormatter()
-			formatter.dateFormat = "HH:mm:ss"
-			
+			formatter.calendar = Calendar(identifier: .iso8601)
+			formatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
 			let finalOrder: [String: Any] = [
 				"orderID": self.orderID!,
 				"orderBranch": self.jsonBranch!["branchName"].stringValue,
 				"orderDate": self.orderCreatedDate!,
 				"orderLocation": self.orderLocation!,
-				"orderEmployee": self.getUserName(),
+				"orderEmployee": self.orderEmployee!,
 				"orderAddress": self.customerJSON!["address"].stringValue,
 				"orderCustomerName": "\(self.customerJSON!["firstName"].stringValue) \(self.customerJSON!["lastName"].stringValue)",
 				"orderCustomerId": self.customerJSON!["idcardnumber"].stringValue,
 				"orderCustomerPhone": self.customerJSON!["phone"].stringValue,
-				"orderBail":"0",
-				"orderSale":"\(self.depositeAmount ?? 0)",
+				"orderBail":"\(self.depositeAmount ?? 0)",
+				"orderSale":"",
 				"orderProject": self.projectType ?? "",
-				"orderContractStart": self.startDate!.description,
-				"orderContractEnd": self.endDate!.description,
-				"orderContractDateStart": formatter.string(from: self.startTime!),
-				"orderContractDateEnd": formatter.string(from: self.endTime!),
+				"orderContractStart": formatter.string(from: self.startDate!),
+				"orderContractEnd": formatter.string(from: self.endDate!),
+				"orderContractDateStart": self.formattedStartTime!,
+				"orderContractDateEnd": self.formattedEndTime!,
 				"orderAllTotal": String(format: "%.2f", self.totalForItem!),
 				"orderAllItem": "\(self.itemAllCount!)",
 				"orderAllDay": "\(self.rentDay!)",
@@ -100,6 +103,7 @@ class ConfirmOrderController: UIViewController {
 			let getUserURL = "https://api.supersrent.com/app-admin/api/orderDetails/orderDetail"
 			let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 			self.backDoorUsername = userData["username"].stringValue
+			print(finalOrder)
 			Alamofire.request(getUserURL, method: .post, parameters: finalOrder, encoding: JSONEncoding.default, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
@@ -125,10 +129,9 @@ class ConfirmOrderController: UIViewController {
 		self.present(popup, animated: true, completion: nil)
 	}
 	
-	func getUserName() -> String {
+	func getUserName() {
 		let data = Locksmith.loadDataForUserAccount(userAccount: "admin")!
 		let userData = JSON(data)
-		var employeeName = ""
 		let getUserURL = "https://api.supersrent.com/app-admin/api/user-setting/getuser/\(userData["username"].stringValue)"
 		let header: HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
 		self.backDoorUsername = userData["username"].stringValue
@@ -137,13 +140,12 @@ class ConfirmOrderController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					employeeName = "\(json["name"].stringValue) \(json["lastname"].stringValue)"
+					self.orderEmployee = "\(json["name"].stringValue) \(json["lastname"].stringValue)"
 				case .failure(let error):
 					print(error)
 				}
 			}
 		}
-		return employeeName
 	}
 	
 	
@@ -187,16 +189,19 @@ extension ConfirmOrderController: UITableViewDataSource {
 		
 		var cell: UITableViewCell?
 		let formatter = DateFormatter()
-		let calendar = Calendar.current
+		formatter.calendar = Calendar(identifier: .gregorian)
+		let calendar = Calendar(identifier: .gregorian)
 		formatter.dateFormat = "dd-MM-yyyy"
 		let startDate = formatter.string(from: self.startDate!)
 		formatter.dateFormat = "HH:mm:ss"
 		let startTime = formatter.string(from: self.startTime!)
+		self.formattedStartTime = startTime
 		
 		formatter.dateFormat = "dd-MM-yyyy"
 		let endDate = formatter.string(from: self.endDate!)
 		formatter.dateFormat = "HH:mm:ss"
 		let endTime = formatter.string(from: self.endTime!)
+		self.formattedEndTime = endTime
 		
 		formatter.dateFormat = "dd-MM-yyy HH:mm:ss"
 		let createdDate = formatter.string(from: Date())
@@ -238,7 +243,10 @@ extension ConfirmOrderController: UITableViewDataSource {
 					"productDefaultDamaged": item["productDefaultDamaged"].intValue,
 					"productDefaultLost": item["productDefaultLost"].intValue,
 					"totalForItem":String(format: "%.2f", item["productRentPrice"].doubleValue * item["productQuantity"].doubleValue)]
-				self.orderItems.append(finalItem)
+				if self.orderItems.count < self.productOrders!.count {
+					self.orderItems.append(finalItem)
+				}
+				
 				
 			}
 			

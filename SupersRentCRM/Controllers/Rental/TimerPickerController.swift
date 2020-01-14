@@ -20,17 +20,15 @@ class TimePickerController: UIViewController {
 		
 		if senderID! == "startDate" || senderID! == "endDate" {
 			self.timePicker.datePickerMode = .date
-			self.timePicker.locale = Locale(identifier: "th_TH")
-			self.timePicker.calendar = Calendar(identifier: .buddhist)
+			self.timePicker.calendar = Calendar(identifier: .gregorian)
 		} else if senderID! == "startTime" || senderID! == "endTime" {
 			self.timePicker.datePickerMode = .time
-			self.timePicker.locale = Locale(identifier: "th_TH")
-			self.timePicker.calendar = Calendar(identifier: .buddhist)
+			self.timePicker.calendar = Calendar(identifier: .gregorian)
 		}
 	}
 	
 	@IBAction func getTime(_ sender: Any) {
-		let calendar = Calendar(identifier: .buddhist)
+		let calendar = Calendar(identifier: .iso8601)
 		
 		print("Date: ", self.timePicker.date)
 		let presenter = self.presentingViewController as! OrderDetailController

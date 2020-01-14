@@ -9,6 +9,8 @@
 import Foundation
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 //MARK: Hex RGB Extension
 extension UIColor {
@@ -39,6 +41,18 @@ extension UIViewController {
 	
 	@objc func dismissKeyboard() {
 		view.endEditing(true)
+	}
+}
+
+extension UITableViewCell {
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		tap.cancelsTouchesInView = false
+		self.contentView.addGestureRecognizer(tap)
+	}
+	
+	@objc func dismissKeyboard() {
+		self.contentView.endEditing(true)
 	}
 }
 
@@ -86,5 +100,22 @@ extension NSAttributedString {
 		
 		return attributedString
 	}
+}
+
+extension UIViewController {
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+			if self.view.frame.origin.y == 0 {
+				self.view.frame.origin.y -= keyboardSize.height
+			}
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		if self.view.frame.origin.y != 0 {
+			self.view.frame.origin.y = 0
+		}
+	}
+	
 }
 

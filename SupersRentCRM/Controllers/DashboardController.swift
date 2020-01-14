@@ -41,7 +41,9 @@ class DashboardController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-		
+					let numberFormatter = NumberFormatter()
+					numberFormatter.numberStyle = .currency
+					numberFormatter.locale = .current
 					self.detailAmount.text = "\(json.count)"
 					var detailAmount: Double = 0.0
 					for item in json.arrayValue {
@@ -50,9 +52,9 @@ class DashboardController: UIViewController {
 							detailAmount += order["totalForItem"].doubleValue
 						}
 					}
-	
+					
 					self.orderTotalDetail = detailAmount
-					self.detailTotal.text = String(format: "%.2f", self.orderTotalDetail)
+					self.detailTotal.text = numberFormatter.string(from: NSNumber(value: self.orderTotalDetail))
 					
 					let urlOrderReturn = "https://api.supersrent.com/app-admin/api/orderDetailsReturn/\(userData["username"].stringValue)"
 					Alamofire.request(urlOrderReturn, method: .get, headers: header).responseJSON { response in
@@ -68,7 +70,7 @@ class DashboardController: UIViewController {
 								}
 						
 								self.orderTotalReturn = returnAmount
-								self.returnTotal.text = String(format: "%.2f", self.orderTotalReturn)
+								self.returnTotal.text = numberFormatter.string(from: NSNumber(value: self.orderTotalReturn))
 							case .failure(let error):
 								print(error)
 							}

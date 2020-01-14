@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class BranchSelectController: UIViewController {
 	
 	var branchList: [String]?
+	var branchJSONList: [JSON]?
+	var whoPresentMe: String?
 	
 	@IBOutlet weak var branchTable: UITableView!
 	
@@ -42,9 +45,34 @@ extension BranchSelectController: UITableViewDelegate {
 		//Get PresentingViewController By reversing CHeck parent.
 		let presenter = self.presentingViewController as? UINavigationController
 		let parentVC = presenter?.viewControllers.first as? UITabBarController
-		let childVC = parentVC?.viewControllers![0] as? RentalController
 		
-		childVC?.selectedBranch = self.branchList![indexPath.row]
+		if self.whoPresentMe == "RentalItem" {
+			let childVC = parentVC?.viewControllers![0] as? RentalController
+			
+			for i in 0..<self.branchJSONList!.count {
+				if self.branchList![indexPath.row] == self.branchJSONList![i]["branchName"].stringValue {
+					childVC?.branchJSON = self.branchJSONList![i]
+					break
+				}
+			}
+			
+			childVC?.selectedBranch = self.branchList![indexPath.row]
+			childVC?.getBranchButton.setTitle(self.branchList![indexPath.row], for: .normal)
+			
+		} else if self.whoPresentMe == "ReturnItem" {
+			let childVC = parentVC?.viewControllers![1] as? ReturnItemController
+			
+			for i in 0..<self.branchJSONList!.count {
+				if self.branchList![indexPath.row] == self.branchJSONList![i]["branchName"].stringValue {
+					childVC?.branchJSON = self.branchJSONList![i]
+					break
+				}
+			}
+			childVC?.getBranchButton.setTitle(self.branchList![indexPath.row], for: .normal)
+			
+		} else {
+			print("Branch: There are no viewcontroller presenting!")
+		}
 		
 		self.dismiss(animated: true, completion: nil)
 	}

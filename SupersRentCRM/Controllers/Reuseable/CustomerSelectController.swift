@@ -14,9 +14,16 @@ import Locksmith
 
 class CustomerSelectController: UIViewController {
 	
+	//Given list customer information for TableData
 	var customerData:[JSON]?
+	
+	//Selected Data
 	var profileData: JSON?
+	
+	//Given information from view heirichy.
 	var selectedBranch: String?
+	var branchInformation: JSON?
+	var whoPresentMe: String?
 	
 	
 	@IBOutlet weak var customerTable: UITableView!
@@ -36,15 +43,19 @@ class CustomerSelectController: UIViewController {
 			print("Customer: \(self.selectedBranch!)")
 			vc.profileData = self.profileData
 			vc.selectedBranch = self.selectedBranch
+			vc.selectedBranchJSON = self.branchInformation
+			vc.whoPresentMe = self.whoPresentMe
 			
 			do {
 				try Locksmith.saveData(data: ["customerInfo": self.profileData!.dictionaryObject!], forUserAccount: "customerInfo")
+				print("CustomerSelect: Saved Profile Data To 'CustomerInfo'")
 			} catch {
-				print(error)
+				print("Saving Customer Info: \(error)")
 				do {
 					try Locksmith.updateData(data: ["customerInfo": self.profileData!.dictionaryObject!], forUserAccount: "customerInfo")
+					print("CustomerSelect: Saved Profile Data To 'CustomerInfo'")
 				} catch {
-					print(error)
+					print("Saving Customer Info: \(error)")
 				}
 			}
 		}
@@ -88,7 +99,9 @@ extension CustomerSelectController: UITableViewDelegate {
 			print("Login: Cancel")
 		}
 		let loginButton = DefaultButton(title: "Login", dismissOnTap: true) {
-			self.profileData = JSON(self.customerData![indexPath.row])
+			
+			//Set selected profile data.
+			self.profileData = self.customerData![indexPath.row]
 			
 			self.performSegue(withIdentifier: "customerToProfile", sender: self)
 		}

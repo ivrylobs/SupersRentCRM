@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Locksmith
+import IHKeyboardAvoiding
 
 class LoginController: UIViewController {
 	
@@ -23,6 +24,11 @@ class LoginController: UIViewController {
 		
 		self.appInitializer()
 		hideKeyboardWhenTappedAround()
+		
+		KeyboardAvoiding.avoidingView = self.usernameTextField
+		KeyboardAvoiding.avoidingView = self.passwordTextField
+		
+		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
 		
 	}
 	

@@ -14,4 +14,5 @@ target 'SupersRentCRM' do
   pod 'PopupDialog', '~> 1.1'
   pod 'StepView'
   pod 'DropDown'
+  pod 'IHKeyboardAvoiding'
 end

@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Locksmith
+import IHKeyboardAvoiding
 
 class RentalController: UIViewController {
 	
@@ -18,19 +19,30 @@ class RentalController: UIViewController {
 	var customerList: [JSON]?
 	var selectedBranch: String?
 	var customerSearch: String?
+	var branchJSON: JSON?
 	
 	
 	@IBOutlet weak var identityNumber: UITextField!
 	@IBOutlet weak var firstName: UITextField!
 	@IBOutlet weak var phoneNumber: UITextField!
 	
+	@IBOutlet weak var getBranchButton: UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		hideKeyboardWhenTappedAround()
+//		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 		
+		hideKeyboardWhenTappedAround()
+		KeyboardAvoiding.avoidingView = self.firstName
+		KeyboardAvoiding.avoidingView = self.identityNumber
+		KeyboardAvoiding.avoidingView = self.phoneNumber
+		
+		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
+
 	}
+	
 	
 	@IBAction func getBranch(_ sender: UIButton) {
 		
@@ -45,7 +57,7 @@ class RentalController: UIViewController {
 				switch response.result {
 				case .success(let data):
 					let json = JSON(data)
-					
+					self.branchJSON = json
 					do {
 						try Locksmith.saveData(data: ["branchList": json.arrayObject!], forUserAccount: "branch")
 						print(Locksmith.loadDataForUserAccount(userAccount: "branch")!)
@@ -111,12 +123,16 @@ class RentalController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "selectBranch" {
 			let vc = segue.destination as? BranchSelectController
+			vc?.branchJSONList = self.branchJSON?.arrayValue
 			vc?.branchList = self.branchList
+			vc?.whoPresentMe = self.restorationIdentifier!
 		} else if segue.identifier == "rentToCustomer" {
 			let vc = segue.destination as? CustomerSelectController
 			print("Rental: \(self.selectedBranch!)")
 			vc?.customerData = self.customerList
 			vc?.selectedBranch = self.selectedBranch
+			vc?.branchInformation = self.branchJSON
+			vc?.whoPresentMe = self.restorationIdentifier
 		}
 	}
 }
