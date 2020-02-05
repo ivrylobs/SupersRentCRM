@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IHKeyboardAvoiding
 
 protocol ProductInformationCellDelegate {
 	func cellDidValueChanged(cellValue: [String], cellId: String)
@@ -34,8 +33,7 @@ class ProductInformationCell: UITableViewCell, UITextFieldDelegate {
 		self.returnAmount.delegate = self
 		self.damagedAmount.delegate = self
 		self.lostAmount.delegate = self
-		
-		hideKeyboardWhenTappedAround()
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,11 +42,6 @@ class ProductInformationCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
 	
-	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-		KeyboardAvoiding.avoidingView = textField
-		KeyboardAvoiding.padding = CGFloat(50)
-		return true
-	}
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		if string == "" {

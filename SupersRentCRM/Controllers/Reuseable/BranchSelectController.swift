@@ -41,10 +41,10 @@ extension BranchSelectController: UITableViewDataSource {
 
 extension BranchSelectController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
 		//Get PresentingViewController By reversing CHeck parent.
-		let presenter = self.presentingViewController as? UINavigationController
+		let presenter = self.presentingViewController?.children[1] as? UINavigationController
 		let parentVC = presenter?.viewControllers.first as? UITabBarController
+		
 		
 		if self.whoPresentMe == "RentalItem" {
 			let childVC = parentVC?.viewControllers![0] as? RentalController
@@ -60,6 +60,7 @@ extension BranchSelectController: UITableViewDelegate {
 			childVC?.getBranchButton.setTitle(self.branchList![indexPath.row], for: .normal)
 			
 		} else if self.whoPresentMe == "ReturnItem" {
+			
 			let childVC = parentVC?.viewControllers![1] as? ReturnItemController
 			
 			for i in 0..<self.branchJSONList!.count {
@@ -73,7 +74,7 @@ extension BranchSelectController: UITableViewDelegate {
 		} else {
 			print("Branch: There are no viewcontroller presenting!")
 		}
-		
+		print("\(self.whoPresentMe!) is presenting")
 		self.dismiss(animated: true, completion: nil)
 	}
 }

@@ -11,10 +11,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Locksmith
-import IHKeyboardAvoiding
+import KeyboardAvoidingView
 import PopupDialog
+import SideMenuSwift
 
 class LoginController: UIViewController {
+	
+	let contentView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashBoardViewController")
+	let menuView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideMenuViewController")
 	
 	
 	@IBOutlet weak var usernameTextField: UITextField!
@@ -22,17 +26,15 @@ class LoginController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		self.appInitializer()
 		hideKeyboardWhenTappedAround()
-		
-		KeyboardAvoiding.avoidingView = self.usernameTextField
-		KeyboardAvoiding.avoidingView = self.passwordTextField
+		self.appInitializer()
 		
 		self.usernameTextField.delegate = self
 		self.passwordTextField.delegate = self
 		
-		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
+		
+		SideMenuController.preferences.basic.menuWidth = CGFloat(240)
+		SideMenuController.preferences.basic.direction = .left
 		
 	}
 	
@@ -59,7 +61,13 @@ class LoginController: UIViewController {
 				
 				print("Login: saving Data")
 				self.loadUserData()
-				self.performSegue(withIdentifier: "loginToDashboard", sender: self)
+				
+				SideMenuController.preferences.basic.defaultCacheKey = "0"
+				let sideMenu = SideMenuController(contentViewController: self.contentView, menuViewController: self.menuView)
+				sideMenu.restorationIdentifier = "sideMenu"
+				self.present(sideMenu, animated: true) {
+					print("SideMenu: reveal SideMenu")
+				}
 			} else {
 				print("Login: Failed")
 				

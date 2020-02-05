@@ -11,7 +11,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Locksmith
-import IHKeyboardAvoiding
 import PopupDialog
 
 class RentalController: UIViewController {
@@ -34,19 +33,11 @@ class RentalController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		//		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-		//		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-		
-		hideKeyboardWhenTappedAround()
-		KeyboardAvoiding.avoidingView = self.firstName
-		KeyboardAvoiding.avoidingView = self.identityNumber
-		KeyboardAvoiding.avoidingView = self.phoneNumber
-		
 		self.firstName.delegate = self
 		self.identityNumber.delegate = self
 		self.phoneNumber.delegate = self
 		
-		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
+		hideKeyboardWhenTappedAround()
 		
 	}
 	

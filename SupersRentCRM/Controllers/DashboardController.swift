@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Locksmith
+import SideMenuSwift
 
 class DashboardController: UIViewController {
 	
@@ -30,6 +31,13 @@ class DashboardController: UIViewController {
 		
 	}
 	
+	
+	@IBAction func revealSideMenu(_ sender: UIButton) {
+		self.sideMenuController?.revealMenu(animated: true, completion: { stateVale in
+			print("SideMenu: reveal from DashBoard")
+		})
+	}
+	
 	func pullOrderDetailData() {
 		
 		let data = Locksmith.loadDataForUserAccount(userAccount: "admin")!
@@ -43,7 +51,7 @@ class DashboardController: UIViewController {
 					let json = JSON(data)
 					let numberFormatter = NumberFormatter()
 					numberFormatter.numberStyle = .currency
-					numberFormatter.locale = .current
+					numberFormatter.locale = .init(identifier: "th_TH")
 					self.detailAmount.text = "\(json.count)"
 					var detailAmount: Double = 0.0
 					for item in json.arrayValue {

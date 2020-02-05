@@ -12,7 +12,6 @@ import SwiftyJSON
 import DropDown
 import Locksmith
 import Alamofire
-import IHKeyboardAvoiding
 
 class OrderDetailController: UIViewController {
 	
@@ -39,13 +38,10 @@ class OrderDetailController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		hideKeyboardWhenTappedAround()
 		
-		KeyboardAvoiding.avoidingView = self.locationText
-		KeyboardAvoiding.avoidingView = self.bearAmountText
-		
-		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
 		print(self.productOrders! )
+		
+		hideKeyboardWhenTappedAround()
 	}
 	
 	@IBAction func goBack(_ sender: UIButton) {

@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A60843A059BE9496DCEB018 /* Pods_SupersRentCRM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */; };
+		803967EC4C569D8D4B791F15 /* Pods_SupersRentCRM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E92D089CB12EB602893D03C /* Pods_SupersRentCRM.framework */; };
 		9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21A23C74485001170E0 /* AppDelegate.swift */; };
 		9E0EF21D23C74485001170E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF21C23C74485001170E0 /* SceneDelegate.swift */; };
 		9E0EF22423C74487001170E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EF22323C74487001170E0 /* Assets.xcassets */; };
+		9E11510323EB4E1600C73A36 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E11510223EB4E1600C73A36 /* MenuBarController.swift */; };
+		9E11510523EB570000C73A36 /* TabSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E11510423EB570000C73A36 /* TabSelectController.swift */; };
 		9E2658FC23CA15410026F496 /* ProductSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2658FB23CA15410026F496 /* ProductSelectController.swift */; };
 		9E2658FF23CA25500026F496 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2658FD23CA25500026F496 /* ProductCell.swift */; };
 		9E26590023CA25500026F496 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E2658FE23CA25500026F496 /* ProductCell.xib */; };
 		9E36E68923CA469E0088C4C9 /* ProductAmountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36E68823CA469E0088C4C9 /* ProductAmountController.swift */; };
 		9E36E68C23CA47EB0088C4C9 /* ProductAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36E68A23CA47EB0088C4C9 /* ProductAmountCell.swift */; };
 		9E36E68D23CA47EB0088C4C9 /* ProductAmountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E36E68B23CA47EB0088C4C9 /* ProductAmountCell.xib */; };
+		9E3CB87923EB5F8B001EDB58 /* ReportTabSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3CB87823EB5F8B001EDB58 /* ReportTabSelectController.swift */; };
 		9E3EBA5523CA62B40053F47A /* OrderDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EBA5423CA62B40053F47A /* OrderDetailController.swift */; };
 		9E3EBA5723CA694A0053F47A /* TimerPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EBA5623CA694A0053F47A /* TimerPickerController.swift */; };
 		9E4F72F923CC7DA70067A82A /* ReturnItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F72F823CC7DA70067A82A /* ReturnItemController.swift */; };
@@ -70,19 +73,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRentCRM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.debug.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.debug.xcconfig"; sourceTree = "<group>"; };
+		22B81B1FF704C8404E6E8825 /* Pods-SupersRentCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.debug.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.debug.xcconfig"; sourceTree = "<group>"; };
+		6E92D089CB12EB602893D03C /* Pods_SupersRentCRM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRentCRM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9943A117EE5EE4A93E7A9A17 /* Pods-SupersRentCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.release.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.release.xcconfig"; sourceTree = "<group>"; };
 		9E0EF21723C74485001170E0 /* SupersRentCRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupersRentCRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0EF21A23C74485001170E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E0EF21C23C74485001170E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9E0EF22323C74487001170E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E0EF22823C74487001170E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E11510223EB4E1600C73A36 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		9E11510423EB570000C73A36 /* TabSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectController.swift; sourceTree = "<group>"; };
 		9E2658FB23CA15410026F496 /* ProductSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSelectController.swift; sourceTree = "<group>"; };
 		9E2658FD23CA25500026F496 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		9E2658FE23CA25500026F496 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		9E36E68823CA469E0088C4C9 /* ProductAmountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountController.swift; sourceTree = "<group>"; };
 		9E36E68A23CA47EB0088C4C9 /* ProductAmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountCell.swift; sourceTree = "<group>"; };
 		9E36E68B23CA47EB0088C4C9 /* ProductAmountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductAmountCell.xib; sourceTree = "<group>"; };
+		9E3CB87823EB5F8B001EDB58 /* ReportTabSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTabSelectController.swift; sourceTree = "<group>"; };
 		9E3EBA5423CA62B40053F47A /* OrderDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailController.swift; sourceTree = "<group>"; };
 		9E3EBA5623CA694A0053F47A /* TimerPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerController.swift; sourceTree = "<group>"; };
 		9E4F72F823CC7DA70067A82A /* ReturnItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnItemController.swift; sourceTree = "<group>"; };
@@ -133,7 +140,6 @@
 		9EF9FA3223CE5AE20049BB20 /* HistoryReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReportController.swift; sourceTree = "<group>"; };
 		9EF9FA3523CE5D200049BB20 /* DailyReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReportCell.swift; sourceTree = "<group>"; };
 		9EF9FA3623CE5D200049BB20 /* DailyReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyReportCell.xib; sourceTree = "<group>"; };
-		DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRentCRM.release.xcconfig"; path = "Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,20 +147,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A60843A059BE9496DCEB018 /* Pods_SupersRentCRM.framework in Frameworks */,
+				803967EC4C569D8D4B791F15 /* Pods_SupersRentCRM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07FED7D0F10E567064760E86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E92D089CB12EB602893D03C /* Pods_SupersRentCRM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E0EF20E23C74485001170E0 = {
 			isa = PBXGroup;
 			children = (
 				9E0EF21923C74485001170E0 /* SupersRentCRM */,
 				9E0EF21823C74485001170E0 /* Products */,
 				B77A663B4425F143AB740FCE /* Pods */,
-				F89EA4CF66A6A01DD61A0080 /* Frameworks */,
+				07FED7D0F10E567064760E86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,11 +199,14 @@
 			children = (
 				9EB0557423C79924000C9B68 /* LoginController.swift */,
 				9EB0557623C7A1FD000C9B68 /* DashboardController.swift */,
+				9E11510223EB4E1600C73A36 /* MenuBarController.swift */,
+				9E11510423EB570000C73A36 /* TabSelectController.swift */,
 				9E4F72FA23CCAEC40067A82A /* Reuseable */,
 				9E4F72F623CC7D580067A82A /* Rental */,
 				9E4F72F723CC7D730067A82A /* Return */,
 				9EF9FA2F23CE5A6D0049BB20 /* Report */,
 				9E86CB3023C9013E00A704B2 /* Cell Controllers */,
+				9E3CB87823EB5F8B001EDB58 /* ReportTabSelectController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -348,18 +365,10 @@
 		B77A663B4425F143AB740FCE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */,
-				DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */,
+				22B81B1FF704C8404E6E8825 /* Pods-SupersRentCRM.debug.xcconfig */,
+				9943A117EE5EE4A93E7A9A17 /* Pods-SupersRentCRM.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F89EA4CF66A6A01DD61A0080 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				941241065CE6F7F5E6C7981A /* Pods_SupersRentCRM.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,11 +378,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E0EF22B23C74487001170E0 /* Build configuration list for PBXNativeTarget "SupersRentCRM" */;
 			buildPhases = (
-				87F711AC1740F455C784A5DB /* [CP] Check Pods Manifest.lock */,
+				A5B28B59B23429FAB4B38AA4 /* [CP] Check Pods Manifest.lock */,
 				9E0EF21323C74485001170E0 /* Sources */,
 				9E0EF21423C74485001170E0 /* Frameworks */,
 				9E0EF21523C74485001170E0 /* Resources */,
-				2BA5F7F1E2C4C2EED1A9CE56 /* [CP] Embed Pods Frameworks */,
+				042D0E61AABD529A815FA019 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -448,7 +457,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BA5F7F1E2C4C2EED1A9CE56 /* [CP] Embed Pods Frameworks */ = {
+		042D0E61AABD529A815FA019 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -465,7 +474,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SupersRentCRM/Pods-SupersRentCRM-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		87F711AC1740F455C784A5DB /* [CP] Check Pods Manifest.lock */ = {
+		A5B28B59B23429FAB4B38AA4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -501,7 +510,9 @@
 				9E89EA8F23CB8067007FB5E9 /* ConfirmProductCell.swift in Sources */,
 				9E86CB2E23C9013800A704B2 /* CustomerDetailCell.swift in Sources */,
 				9E3EBA5523CA62B40053F47A /* OrderDetailController.swift in Sources */,
+				9E11510523EB570000C73A36 /* TabSelectController.swift in Sources */,
 				9E89EA8323CB7FF6007FB5E9 /* ConfirmCustomerCell.swift in Sources */,
+				9E11510323EB4E1600C73A36 /* MenuBarController.swift in Sources */,
 				9EF9FA3323CE5AE20049BB20 /* HistoryReportController.swift in Sources */,
 				9E86CB3523C9188800A704B2 /* ProfileImageCell.swift in Sources */,
 				9E6000C223CCC16400F6C8D6 /* OrderInformationCell.swift in Sources */,
@@ -515,6 +526,7 @@
 				9E36E68C23CA47EB0088C4C9 /* ProductAmountCell.swift in Sources */,
 				9E0EF21B23C74485001170E0 /* AppDelegate.swift in Sources */,
 				9E36E68923CA469E0088C4C9 /* ProductAmountController.swift in Sources */,
+				9E3CB87923EB5F8B001EDB58 /* ReportTabSelectController.swift in Sources */,
 				9EF9FA3123CE5A8E0049BB20 /* DailyReportController.swift in Sources */,
 				9E4F72FC23CCAEF30067A82A /* ProductReturnSelectController.swift in Sources */,
 				9E5D8F1C23CCD811000BEE83 /* ReturnDetailController.swift in Sources */,
@@ -655,7 +667,7 @@
 		};
 		9E0EF22C23C74487001170E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9731CEB9245A70B01E2FDC01 /* Pods-SupersRentCRM.debug.xcconfig */;
+			baseConfigurationReference = 22B81B1FF704C8404E6E8825 /* Pods-SupersRentCRM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -676,7 +688,7 @@
 		};
 		9E0EF22D23C74487001170E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD1C23F70730BE499DA35B8A /* Pods-SupersRentCRM.release.xcconfig */;
+			baseConfigurationReference = 9943A117EE5EE4A93E7A9A17 /* Pods-SupersRentCRM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

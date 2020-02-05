@@ -6,13 +6,13 @@ target 'SupersRentCRM' do
   use_frameworks!
 
   # Pods for SupersRentCRM
-  pod 'SideMenu', '~> 6.0'
+  pod 'SideMenuSwift'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'KDCalendar'
+  pod 'KeyboardAvoidingView'
   pod 'Locksmith'
-  pod 'PopupDialog', '~> 1.1'
+  pod 'PopupDialog'
   pod 'StepView'
   pod 'DropDown'
-  pod 'IHKeyboardAvoiding'
 end

@@ -2,25 +2,27 @@ PODS:
   - Alamofire (4.9.1)
   - DropDown (2.3.13)
   - DynamicBlurView (4.0.0)
-  - IHKeyboardAvoiding (4.7)
-  - KDCalendar (1.8.4):
-    - KDCalendar/EventManager (= 1.8.4)
-  - KDCalendar/EventManager (1.8.4)
+  - KDCalendar (1.8.9):
+    - KDCalendar/EventManager (= 1.8.9)
+  - KDCalendar/EventManager (1.8.9)
+  - KeyboardAvoidingView (5.0.0):
+    - ViewState (>= 1.0.0)
   - Locksmith (4.0.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
-  - SideMenu (6.4.7)
+  - SideMenuSwift (2.0.3)
   - StepView (1.0.5)
   - SwiftyJSON (5.0.0)
+  - ViewState (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - DropDown
-  - IHKeyboardAvoiding
   - KDCalendar
+  - KeyboardAvoidingView
   - Locksmith
-  - PopupDialog (~> 1.1)
-  - SideMenu (~> 6.0)
+  - PopupDialog
+  - SideMenuSwift
   - StepView
   - SwiftyJSON
 
@@ -29,26 +31,28 @@ SPEC REPOS:
     - Alamofire
     - DropDown
     - DynamicBlurView
-    - IHKeyboardAvoiding
     - KDCalendar
+    - KeyboardAvoidingView
     - Locksmith
     - PopupDialog
-    - SideMenu
+    - SideMenuSwift
     - StepView
     - SwiftyJSON
+    - ViewState
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
-  IHKeyboardAvoiding: 4cae0880c3975feffa278495df894c5166e71ad0
-  KDCalendar: 861d7fee0c7b919b68d2af61675a532165adcf26
+  KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
+  KeyboardAvoidingView: 93c4f709386c998b7b7f6b405a05c5c3585410a7
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
-  SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
+  SideMenuSwift: 5c2b1496544ce3f1f08f4dddf4810eaac49f543d
   StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  ViewState: 78aa77483e74e592c22e841619b853bc686843be
 
-PODFILE CHECKSUM: 2a3d76652da810ac11d146b1e1aa7bb4841ac341
+PODFILE CHECKSUM: 14a25a868304cc444994f5da441d11bde5588690
 
 COCOAPODS: 1.8.4

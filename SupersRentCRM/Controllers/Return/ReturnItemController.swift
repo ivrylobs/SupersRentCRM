@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Locksmith
-import IHKeyboardAvoiding
 import UIKit
 
 class ReturnItemController: UIViewController {
@@ -37,17 +36,12 @@ class ReturnItemController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		hideKeyboardWhenTappedAround()
-		KeyboardAvoiding.avoidingView = self.identityNumber
-		KeyboardAvoiding.avoidingView = self.firstName
-		KeyboardAvoiding.avoidingView = self.phoneNumber
-		
-		KeyboardAvoiding.paddingForCurrentAvoidingView = CGFloat(50)
-		
 		let loaddedData = Locksmith.loadDataForUserAccount(userAccount: "admin")
 		self.userDataJSON = JSON(loaddedData!)
 		
 		self.httpHeader = ["Accept":"application/json","Authorization": self.userDataJSON!["tokenAccess"].stringValue]
+		
+		hideKeyboardWhenTappedAround()
 		
 	}
 	
