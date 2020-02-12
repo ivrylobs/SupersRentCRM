@@ -6,7 +6,6 @@
 //  Copyright © 2563 banraomaibab. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -17,27 +16,32 @@ import SideMenuSwift
 
 class LoginController: UIViewController {
 	
+	//Get the Content View and Menu View from Storyboard.
 	let contentView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashBoardViewController")
 	let menuView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideMenuViewController")
 	
-	
+	//Get TextField from LoginView.
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		//Implement this method for abadon keyboard when not typing.
 		hideKeyboardWhenTappedAround()
+		
+		//Init localStorage
 		self.appInitializer()
 		
+		//Define delegate pattern.
 		self.usernameTextField.delegate = self
 		self.passwordTextField.delegate = self
 		
-		
+		//Setup SideMenu.
 		SideMenuController.preferences.basic.menuWidth = CGFloat(240)
 		SideMenuController.preferences.basic.direction = .left
 		
 	}
-	
 	
 	@IBAction func loginButton(_ sender: UIButton) {
 		self.loginByUsername()
