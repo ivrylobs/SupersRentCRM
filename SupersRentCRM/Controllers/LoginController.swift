@@ -40,7 +40,6 @@ class LoginController: UIViewController {
 		//Setup SideMenu.
 		SideMenuController.preferences.basic.menuWidth = CGFloat(240)
 		SideMenuController.preferences.basic.direction = .left
-		
 	}
 	
 	@IBAction func loginButton(_ sender: UIButton) {
@@ -68,6 +67,7 @@ class LoginController: UIViewController {
 				
 				SideMenuController.preferences.basic.defaultCacheKey = "0"
 				let sideMenu = SideMenuController(contentViewController: self.contentView, menuViewController: self.menuView)
+                sideMenu.modalPresentationStyle = .fullScreen
 				sideMenu.restorationIdentifier = "sideMenu"
 				self.present(sideMenu, animated: true) {
 					print("SideMenu: reveal SideMenu")
@@ -107,7 +107,6 @@ class LoginController: UIViewController {
 			}
 		} else {
 			print("App Initializer: Have data")
-			
 			self.loadUserData()
 		}
 	}

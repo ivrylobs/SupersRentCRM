@@ -742,7 +742,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="St5-Bg-ie0">
-                                <rect key="frame" x="135" y="94" width="240" height="684"/>
+                                <rect key="frame" x="135" y="94" width="240" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="v4J-Ln-ubH"/>
@@ -775,7 +775,7 @@
                             <constraint firstItem="O1h-io-llP" firstAttribute="top" secondItem="IA6-q7-Ome" secondAttribute="top" id="alo-lB-FbW"/>
                             <constraint firstItem="IA6-q7-Ome" firstAttribute="trailing" secondItem="St5-Bg-ie0" secondAttribute="trailing" id="cJF-5f-1mk"/>
                             <constraint firstItem="IA6-q7-Ome" firstAttribute="trailing" secondItem="O1h-io-llP" secondAttribute="trailing" id="cpO-Na-nyV"/>
-                            <constraint firstItem="IA6-q7-Ome" firstAttribute="bottom" secondItem="St5-Bg-ie0" secondAttribute="bottom" id="gaV-rs-Z8h"/>
+                            <constraint firstAttribute="bottom" secondItem="St5-Bg-ie0" secondAttribute="bottom" id="gaV-rs-Z8h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IA6-q7-Ome"/>
                     </view>
