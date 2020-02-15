@@ -35,6 +35,7 @@ class CustomerSelectController: UIViewController {
 		
 		let cellNib = UINib(nibName: "CustomerDetailCell", bundle: nil)
 		self.customerTable.register(cellNib, forCellReuseIdentifier: "CustomerDetailCell")
+        
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

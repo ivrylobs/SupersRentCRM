@@ -44,7 +44,7 @@ class DashboardController: UIViewController {
 		let userData = JSON(data)
 		let urlOrderDetail = "https://api.supersrent.com/app-admin/api/orderDetails/getOrderDetail/\(userData["username"].stringValue)"
 		let header:HTTPHeaders = ["Accept":"application/json","Authorization": userData["tokenAccess"].stringValue]
-		Alamofire.request(urlOrderDetail, method: .get, headers: header).responseJSON { response in
+		AF.request(urlOrderDetail, method: .get, headers: header).responseJSON { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let data):
@@ -65,7 +65,7 @@ class DashboardController: UIViewController {
 					self.detailTotal.text = numberFormatter.string(from: NSNumber(value: self.orderTotalDetail))
 					
 					let urlOrderReturn = "https://api.supersrent.com/app-admin/api/orderDetailsReturn/\(userData["username"].stringValue)"
-					Alamofire.request(urlOrderReturn, method: .get, headers: header).responseJSON { response in
+					AF.request(urlOrderReturn, method: .get, headers: header).responseJSON { response in
 						DispatchQueue.main.async {
 							switch response.result {
 							case .success(let data):

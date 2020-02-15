@@ -6,13 +6,19 @@
 //  Copyright © 2563 banraomaibab. All rights reserved.
 //
 
+//UILibraries
 import UIKit
+
+//Utilities
 import Alamofire
 import SwiftyJSON
 import Locksmith
+
+//Control Libraries
 import KeyboardAvoidingView
 import PopupDialog
 import SideMenuSwift
+import SafariServices
 
 class LoginController: UIViewController {
 	
@@ -23,7 +29,8 @@ class LoginController: UIViewController {
 	//Get TextField from LoginView.
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
-	
+    @IBOutlet weak var registerTextView: UITextView!
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -40,6 +47,17 @@ class LoginController: UIViewController {
 		//Setup SideMenu.
 		SideMenuController.preferences.basic.menuWidth = CGFloat(240)
 		SideMenuController.preferences.basic.direction = .left
+        SideMenuController.preferences.basic.defaultCacheKey = "0"
+        
+        let path = "https://supersrentcrm.com/signup"
+        let text = self.registerTextView.text
+        let font = self.registerTextView.font
+        
+        let attributedString = NSAttributedString.makeHyperLink(for: path, in: text!, as: "Register")
+        self.registerTextView.attributedText = attributedString
+        self.registerTextView.font = font
+        
+        self.registerTextView.delegate = self
 	}
 	
 	@IBAction func loginButton(_ sender: UIButton) {
@@ -65,7 +83,7 @@ class LoginController: UIViewController {
 				print("Login: saving Data")
 				self.loadUserData()
 				
-				SideMenuController.preferences.basic.defaultCacheKey = "0"
+				
 				let sideMenu = SideMenuController(contentViewController: self.contentView, menuViewController: self.menuView)
                 sideMenu.modalPresentationStyle = .fullScreen
 				sideMenu.restorationIdentifier = "sideMenu"
@@ -98,10 +116,16 @@ class LoginController: UIViewController {
 	}
 	
 	func appInitializer() {
-		if Locksmith.loadDataForUserAccount(userAccount: "admin") == nil {
+        
+        //Check if initial data is ready.
+        
+        let userAccount = "admin"
+        let defaultUserData: [String : Any] = ["isLogin": false, "tokenAccess": "", "username": "", "userData": ""]
+        
+		if Locksmith.loadDataForUserAccount(userAccount: userAccount) == nil {
 			print("App Initializer: nil ....!")
 			do {
-				try Locksmith.saveData(data: ["isLogin": false, "tokenAccess": "", "username": "", "userData": ""], forUserAccount: "admin")
+				try Locksmith.saveData(data: defaultUserData, forUserAccount: "admin")
 			} catch {
 				print(error)
 			}
@@ -110,49 +134,15 @@ class LoginController: UIViewController {
 			self.loadUserData()
 		}
 	}
-	
-	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
-		if parameters != nil && header == nil {
-			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
-				DispatchQueue.main.async {
-					switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						handler(json)
-					case .failure(let error):
-						print("API: Pulling failed with error!")
-						print("API Error: \(error)")
-					}
-				}
-			}
-		} else if header != nil && parameters == nil {
-			Alamofire.request(url, method: method, headers: header).responseJSON { response in
-				DispatchQueue.main.async {
-					switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						handler(json)
-					case .failure(let error):
-						print("API: Pulling failed with error!")
-						print("API Error: \(error)")
-					}
-				}
-			}
-		} else if header != nil && parameters != nil {
-			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
-				DispatchQueue.main.async {
-					switch response.result {
-					case .success(let data):
-						let json = JSON(data)
-						handler(json)
-					case .failure(let error):
-						print("API: Pulling failed with error!")
-						print("API Error: \(error)")
-					}
-				}
-			}
-		}
-	}
+}
+
+extension LoginController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        print("pressed URL")
+        let svc = SFSafariViewController(url: URL)
+        self.present(svc, animated: true, completion: nil)
+        return false
+    }
 }
 
 extension LoginController: UITextFieldDelegate {
@@ -166,4 +156,49 @@ extension LoginController: UITextFieldDelegate {
 		}
 		return true
 	}
+}
+
+extension LoginController {
+    func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
+        if parameters != nil && header == nil {
+            AF.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+                DispatchQueue.main.async {
+                    switch response.result {
+                    case .success(let data):
+                        let json = JSON(data)
+                        handler(json)
+                    case .failure(let error):
+                        print("API: Pulling failed with error!")
+                        print("API Error: \(error)")
+                    }
+                }
+            }
+        } else if header != nil && parameters == nil {
+            AF.request(url, method: method, headers: header).responseJSON { response in
+                DispatchQueue.main.async {
+                    switch response.result {
+                    case .success(let data):
+                        let json = JSON(data)
+                        handler(json)
+                    case .failure(let error):
+                        print("API: Pulling failed with error!")
+                        print("API Error: \(error)")
+                    }
+                }
+            }
+        } else if header != nil && parameters != nil {
+            AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+                DispatchQueue.main.async {
+                    switch response.result {
+                    case .success(let data):
+                        let json = JSON(data)
+                        handler(json)
+                    case .failure(let error):
+                        print("API: Pulling failed with error!")
+                        print("API Error: \(error)")
+                    }
+                }
+            }
+        }
+    }
 }

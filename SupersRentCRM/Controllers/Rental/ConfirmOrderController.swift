@@ -129,7 +129,7 @@ class ConfirmOrderController: UIViewController {
 							countUpdate += 1
 							
 							if countUpdate == self.orderItems.count {
-								let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
+								let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.children[1] as! UINavigationController
 								presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
 							}
 						}
@@ -140,7 +140,7 @@ class ConfirmOrderController: UIViewController {
 				} else {
 					let alertPopUp = PopupDialog(title: "ผิดพลาด", message: "เพิ่มคำสั่งเช่า ไม่สำเร็จกรุณาลองใหม่อีกครั้ง")
 					let okAlertButton = DefaultButton(title: "OK", height: 40, dismissOnTap: true) {
-						let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
+						let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.children[1] as! UINavigationController
 						presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
 					}
 					alertPopUp.addButton(okAlertButton)
@@ -171,7 +171,7 @@ class ConfirmOrderController: UIViewController {
 	
 	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
 		if parameters != nil && header == nil {
-			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -184,7 +184,7 @@ class ConfirmOrderController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters == nil {
-			Alamofire.request(url, method: method, headers: header).responseJSON { response in
+			AF.request(url, method: method, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -197,7 +197,7 @@ class ConfirmOrderController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters != nil {
-			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):

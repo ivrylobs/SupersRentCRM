@@ -59,7 +59,7 @@ class ProductReturnSelectController: UIViewController {
 	
 	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
 		if parameters != nil && header == nil {
-			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -72,7 +72,7 @@ class ProductReturnSelectController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters == nil {
-			Alamofire.request(url, method: method, headers: header).responseJSON { response in
+			AF.request(url, method: method, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -85,7 +85,7 @@ class ProductReturnSelectController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters != nil {
-			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):

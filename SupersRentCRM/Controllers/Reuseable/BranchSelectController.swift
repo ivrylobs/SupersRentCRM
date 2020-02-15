@@ -24,6 +24,7 @@ class BranchSelectController: UIViewController {
 		self.branchTable.delegate = self
 		self.branchTable.dataSource = self
 		self.branchTable.tableFooterView = UIView()
+        
 	}
 }
 

@@ -151,7 +151,7 @@ class ProductReturnSummaryController: UIViewController {
 				} else {
 					print("Push ReturnItem: Failed")
 				}
-				let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
+				let presenter = self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.children[1] as! UINavigationController
 				presenter.viewControllers.first?.dismiss(animated: true, completion: nil)
 			}
 		}
@@ -165,7 +165,7 @@ class ProductReturnSummaryController: UIViewController {
 	
 	func pullAPI(url: URLConvertible, method: HTTPMethod, parameters: Parameters? = nil, header: HTTPHeaders? = nil, handler: @escaping (JSON) -> Void) {
 		if parameters != nil && header == nil {
-			Alamofire.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters!, encoding: JSONEncoding.default).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -178,7 +178,7 @@ class ProductReturnSummaryController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters == nil {
-			Alamofire.request(url, method: method, headers: header).responseJSON { response in
+			AF.request(url, method: method, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):
@@ -191,7 +191,7 @@ class ProductReturnSummaryController: UIViewController {
 				}
 			}
 		} else if header != nil && parameters != nil {
-			Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+			AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
 				DispatchQueue.main.async {
 					switch response.result {
 					case .success(let data):

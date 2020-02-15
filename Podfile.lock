@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.0.0)
   - DropDown (2.3.13)
   - DynamicBlurView (4.0.0)
   - KDCalendar (1.8.9):
@@ -41,7 +41,7 @@ SPEC REPOS:
     - ViewState
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
